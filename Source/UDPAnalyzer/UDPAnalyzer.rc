@@ -1,0 +1,868 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+#include "verrsrc.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Korean (Korea) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "#include ""verrsrc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#include ""res\\UDPAnalyzer.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""      // Standard components\r\n"
+    "#include ""afxprint.rc""    // printing/print preview resources\r\n"
+    "#if !defined(_AFXDLL)\r\n"
+    "#include ""afxribbon.rc""        // MFC ribbon and control bar resources\r\n"
+    "#endif\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_UDP DIALOGEX 0, 0, 336, 308
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Port",IDC_STATIC,7,9,14,8
+    EDITTEXT        IDC_EDIT_PORT,32,7,46,14,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "Server Start",IDC_BUTTON_START,81,7,50,14
+    EDITTEXT        IDC_EDIT_PROTOCOL,7,39,322,146,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Protocol Command Editor",IDC_STATIC,10,28,81,8
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,7,185,50,14
+    CONTROL         "",IDC_STATIC_DUMP,"Static",SS_BLACKFRAME,7,225,322,76
+    LTEXT           "Packet Dump",IDC_STATIC,7,216,42,8
+    CONTROL         "Dump",IDC_CHECK_DUMP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,59,215,34,10
+    CONTROL         "ASCII",IDC_CHECK_ASCII,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,95,215,35,10
+    CONTROL         "Symbol",IDC_CHECK_SYMBOL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,132,215,39,10
+    LTEXT           "Packet Receive Count",IDC_STATIC,7,205,71,8
+    LTEXT           "Receive Count",IDC_STATIC_RCVCOUNT,84,205,48,8
+END
+
+IDD_DIALOG_PLOT DIALOGEX 0, 0, 328, 276
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,7,123,50,14
+    CONTROL         "",IDC_STATIC_PLOT,"Static",SS_BLACKFRAME,7,144,314,125
+    LTEXT           "Plot Input String Format",IDC_STATIC,7,8,78,8
+    EDITTEXT        IDC_EDIT_PLOTINPUT,7,17,314,12,ES_AUTOHSCROLL
+    LTEXT           "Plot Command Editor",IDC_STATIC,7,48,67,8
+    EDITTEXT        IDC_EDIT_COMMAND,7,57,314,65,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT_PLOTINPUT_OUT,7,30,314,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "New Plot Window",IDC_BUTTON_NEWPLOTWINDOW,255,123,66,14
+END
+
+IDD_DIALOG_MIXING DIALOGEX 0, 0, 385, 306
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_COMMAND,7,17,371,152,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Mixing Command Editor",IDC_STATIC,7,7,75,8
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,7,169,50,14
+    CONTROL         "",IDC_LIST_SYMBOL,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,198,371,101
+    LTEXT           "Symbol List",IDC_STATIC,7,189,36,8
+    CONTROL         "Update Symbol",IDC_CHECK_SYMBOL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,61,188,64,10
+    LTEXT           "Update FPS : ",IDC_STATIC_FPS,135,188,90,8
+END
+
+IDD_DIALOG_OUTPUT DIALOGEX 0, 0, 306, 322
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Serial",IDC_RADIO_SERIAL,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,7,33,10
+    CONTROL         "UDP",IDC_RADIO_UDP,"Button",BS_AUTORADIOBUTTON,45,7,29,10
+    CONTROL         "None",IDC_RADIO_NONE,"Button",BS_AUTORADIOBUTTON,79,7,33,10
+    COMBOBOX        IDC_COMBO_COM,44,19,145,192,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "COM",IDC_STATIC,8,22,16,8
+    LTEXT           "BaudRate",IDC_STATIC,7,35,32,8
+    COMBOBOX        IDC_COMBO_BAUDRATE,44,34,145,192,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_IPADDRESS_IP,"SysIPAddress32",WS_TABSTOP,44,52,100,15
+    LTEXT           "IP",IDC_STATIC,7,55,8,8
+    EDITTEXT        IDC_EDIT_PORT,44,68,40,14,ES_AUTOHSCROLL
+    LTEXT           "Port",IDC_STATIC,7,71,14,8
+    PUSHBUTTON      "Connect",IDC_BUTTON_CONNECT,204,19,50,14
+    LTEXT           "Send Data",IDC_STATIC,7,104,34,8
+    LTEXT           "Send Data",IDC_STATIC_SENDDATA,55,104,244,8
+    LTEXT           "Roll (radian)",IDC_STATIC,12,132,40,8
+    EDITTEXT        IDC_EDIT_ROLL,56,129,62,14,ES_AUTOHSCROLL
+    LTEXT           "Pitch (radian)",IDC_STATIC,12,148,44,8
+    EDITTEXT        IDC_EDIT_PITCH,56,145,62,14,ES_AUTOHSCROLL
+    LTEXT           "Yaw (radian)",IDC_STATIC,12,163,42,8
+    EDITTEXT        IDC_EDIT_YAW,56,161,62,14,ES_AUTOHSCROLL
+    GROUPBOX        "3D View",IDC_STATIC_3DGROUP,7,121,115,58
+    PUSHBUTTON      "Update",IDC_BUTTON_3DUPDATE,249,130,50,14
+    EDITTEXT        IDC_EDIT_SENDCOMMAND,52,88,194,14,ES_AUTOHSCROLL
+    LTEXT           "Send Format",IDC_STATIC,7,91,42,8
+    CONTROL         "",IDC_STATIC_PLOT,"Static",SS_BLACKFRAME,7,258,292,57
+    EDITTEXT        IDC_EDIT_PLOT_COMMAND,7,191,292,51,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Plot Command",IDC_STATIC,8,182,46,8
+    PUSHBUTTON      "Update",IDC_BUTTON_PLOT_UPDATE,7,242,50,14
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE_SENDFORMAT,249,87,50,14
+    LTEXT           "Roll (radian)",IDC_STATIC,132,132,40,8
+    EDITTEXT        IDC_EDIT_ROLL2,176,129,62,14,ES_AUTOHSCROLL
+    LTEXT           "Pitch (radian)",IDC_STATIC,132,148,44,8
+    EDITTEXT        IDC_EDIT_PITCH2,176,145,62,14,ES_AUTOHSCROLL
+    LTEXT           "Yaw (radian)",IDC_STATIC,132,163,42,8
+    EDITTEXT        IDC_EDIT_YAW2,176,161,62,14,ES_AUTOHSCROLL
+    GROUPBOX        "3D View 2",IDC_STATIC_3DGROUP2,127,121,115,58
+END
+
+IDD_DIALOG_3D DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_DIALOG_UDP_PLAYER DIALOGEX 0, 0, 309, 363
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_TREE_FILE,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | TVS_NOHSCROLL | WS_BORDER | WS_TABSTOP,7,7,295,78
+    PUSHBUTTON      "File Refresh",IDC_BUTTON_FILE_REFRESH,252,85,50,14
+    PUSHBUTTON      "Play",IDC_BUTTON_PLAY,13,178,50,14
+    PUSHBUTTON      "Stop",IDC_BUTTON_STOP,67,178,50,14
+    PUSHBUTTON      "Record",IDC_BUTTON_RECORD,137,178,50,14
+    CONTROL         "",IDC_SLIDER_PLAY,"msctls_trackbar32",TBS_BOTH | TBS_ENABLESELRANGE | WS_TABSTOP,7,240,295,27
+    GROUPBOX        "Player",IDC_STATIC_GROUP,7,166,295,101
+    CONTROL         "",IDC_TREE_FILEINFO,"SysTreeView32",TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,7,99,295,55
+    LTEXT           "File Information",IDC_STATIC,7,90,51,8
+    EDITTEXT        IDC_EDIT_UDP_PORT,64,215,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "UDP Send IP",IDC_STATIC,12,202,41,8
+    LTEXT           "UDP Send Port",IDC_STATIC,12,217,48,8
+    CONTROL         "",IDC_IPADDRESS_UDP_IP,"SysIPAddress32",WS_TABSTOP,64,199,100,15
+    LTEXT           "Play Pos",IDC_STATIC,12,231,28,8
+    LTEXT           "Play Cursor",IDC_STATIC_PLAY_POS,65,231,237,8
+    CONTROL         "Repeat",IDC_CHECK_REPEAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,259,181,39,10
+END
+
+IDD_DIALOG_SENDUDP DIALOGEX 0, 0, 309, 276
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_IPADDRESS_IP,"SysIPAddress32",WS_TABSTOP,39,8,100,15
+    PUSHBUTTON      "Connect",IDC_BUTTON_CONNECT,149,8,50,14
+    EDITTEXT        IDC_EDIT_PORT,39,25,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Sync UDP View",IDC_CHECK_SYNC_UDPVIEW,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,151,28,63,10
+    LTEXT           "Port",IDC_STATIC,7,27,14,8
+    EDITTEXT        IDC_EDIT1,39,58,208,14,ES_AUTOHSCROLL
+    LTEXT           "Packet1",IDC_STATIC,7,60,26,8
+    PUSHBUTTON      "Send",IDC_BUTTON1,252,58,50,14
+    LTEXT           "IP",IDC_STATIC,7,11,8,8
+    EDITTEXT        IDC_EDIT2,39,77,208,14,ES_AUTOHSCROLL
+    LTEXT           "Packet2",IDC_STATIC,7,80,26,8
+    PUSHBUTTON      "Send",IDC_BUTTON2,252,77,50,14
+    EDITTEXT        IDC_EDIT3,39,96,208,14,ES_AUTOHSCROLL
+    LTEXT           "Packet3",IDC_STATIC,7,99,26,8
+    PUSHBUTTON      "Send",IDC_BUTTON3,252,96,50,14
+    EDITTEXT        IDC_EDIT4,39,115,208,14,ES_AUTOHSCROLL
+    LTEXT           "Packet4",IDC_STATIC,7,118,26,8
+    PUSHBUTTON      "Send",IDC_BUTTON4,252,115,50,14
+    EDITTEXT        IDC_EDIT5,39,135,208,14,ES_AUTOHSCROLL
+    LTEXT           "Packet5",IDC_STATIC,7,138,26,8
+    PUSHBUTTON      "Send",IDC_BUTTON5,252,135,50,14
+    EDITTEXT        IDC_EDIT6,39,154,208,14,ES_AUTOHSCROLL
+    LTEXT           "Packet6",IDC_STATIC,7,157,26,8
+    PUSHBUTTON      "Send",IDC_BUTTON6,252,154,50,14
+    EDITTEXT        IDC_EDIT7,39,173,208,14,ES_AUTOHSCROLL
+    LTEXT           "Packet7",IDC_STATIC,7,176,26,8
+    PUSHBUTTON      "Send",IDC_BUTTON7,252,173,50,14
+    EDITTEXT        IDC_EDIT8,39,192,208,14,ES_AUTOHSCROLL
+    LTEXT           "Packet8",IDC_STATIC,7,195,26,8
+    PUSHBUTTON      "Send",IDC_BUTTON8,252,192,50,14
+    EDITTEXT        IDC_EDIT9,39,211,208,14,ES_AUTOHSCROLL
+    LTEXT           "Packet9",IDC_STATIC,7,214,26,8
+    PUSHBUTTON      "Send",IDC_BUTTON9,252,211,50,14
+    EDITTEXT        IDC_EDIT10,39,230,208,14,ES_AUTOHSCROLL
+    LTEXT           "Packet10",IDC_STATIC,7,234,30,8
+    PUSHBUTTON      "Send",IDC_BUTTON10,252,230,50,14
+    LTEXT           "Possible String and Symbol",IDC_STATIC,40,47,86,8
+    CONTROL         "Convert C/R",IDC_CHECK_CR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,216,28,56,10
+    CONTROL         "Only String",IDC_CHECK_ONLYSTRING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,131,46,51,10
+END
+
+IDD_DIALOG_SHM DIALOGEX 0, 0, 309, 397
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Read Shared Memory Name",IDC_STATIC,7,9,90,8
+    EDITTEXT        IDC_EDIT_SHMNAME,102,7,95,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Open",IDC_BUTTON_OPEN,252,7,50,14
+    LTEXT           "Update FPS : 0",IDC_STATIC_FPS,232,24,66,8
+    CONTROL         "",IDC_TREE_FILE,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | TVS_NOHSCROLL | WS_BORDER | WS_TABSTOP,7,46,295,78
+    PUSHBUTTON      "Record",IDC_BUTTON_RECORD,10,154,50,14
+    GROUPBOX        "Record",IDC_STATIC_GROUP1,8,136,295,34
+    LTEXT           "Record Length (Bytes)",IDC_STATIC,12,145,92,8
+    LTEXT           "0",IDC_STATIC_RECORD_TIME,115,145,67,8
+    LTEXT           "File List",IDC_STATIC,7,36,100,8
+    GROUPBOX        "Play",IDC_STATIC_GROUP2,7,170,295,78
+    LTEXT           "Play Time (Length)",IDC_STATIC,12,205,92,8
+    LTEXT           "FileName",IDC_STATIC,12,179,92,8
+    LTEXT           "FileName",IDC_STATIC_FILENAME,115,179,183,8
+    LTEXT           "0",IDC_STATIC_PLAYTIME,115,205,92,8
+    PUSHBUTTON      "Play",IDC_BUTTON_PLAY,10,214,50,14
+    CONTROL         "",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | TBS_ENABLESELRANGE | WS_TABSTOP,9,229,290,17
+    CONTROL         "Repeat",IDC_CHECK_REPEAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,114,216,39,10
+    PUSHBUTTON      "Refresh",IDC_BUTTON_REFRESH,252,125,50,14
+    LTEXT           "Shared Memory Name",IDC_STATIC,12,191,71,8
+    EDITTEXT        IDC_EDIT1,114,189,134,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_STATIC_DUMP,"Static",SS_BLACKFRAME,7,254,295,135
+    CONTROL         "Symbols",IDC_CHECK_SYMTABLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,200,10,42,10
+    LTEXT           "Memory Size (Bytes)",IDC_STATIC,7,24,66,8
+    EDITTEXT        IDC_EDIT_READ_MEMSIZE,102,22,40,14,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG_UDP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 329
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 301
+    END
+
+    IDD_DIALOG_PLOT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 321
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 269
+    END
+
+    IDD_DIALOG_MIXING, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 378
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 299
+    END
+
+    IDD_DIALOG_OUTPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 299
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 315
+    END
+
+    IDD_DIALOG_3D, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DIALOG_UDP_PLAYER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 356
+    END
+
+    IDD_DIALOG_SENDUDP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 269
+    END
+
+    IDD_DIALOG_SHM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 390
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG_OUTPUT AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG_SHM AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG_MIXING AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // Korean (Korea) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About UDPAnalyzer"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    LTEXT           "UDPAnalyzer, Version 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2015",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\UDPAnalyzer.ico"
+
+IDR_UDPAnalyzerTYPE     ICON                    "res\\UDPAnalyzerDoc.ico"
+
+IDI_FILE_VIEW           ICON                    "res\\file_view.ico"
+
+IDI_FILE_VIEW_HC        ICON                    "res\\file_view_hc.ico"
+
+IDI_CLASS_VIEW          ICON                    "res\\class_view.ico"
+
+IDI_CLASS_VIEW_HC       ICON                    "res\\class_view_hc.ico"
+
+IDI_OUTPUT_WND          ICON                    "res\\output_wnd.ico"
+
+IDI_OUTPUT_WND_HC       ICON                    "res\\output_wnd_hc.ico"
+
+IDI_PROPERTIES_WND      ICON                    "res\\properties_wnd.ico"
+
+IDI_PROPERTIES_WND_HC   ICON                    "res\\properties_wnd_hc.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+IDR_MAINFRAME_256       BITMAP                  "res\\Toolbar256.bmp"
+
+IDR_SORT                BITMAP                  "res\\sort.bmp"
+
+IDB_SORT_24             BITMAP                  "res\\sort_hc.bmp"
+
+IDB_FILE_VIEW           BITMAP                  "res\\fileview.bmp"
+
+IDB_FILE_VIEW_24        BITMAP                  "res\\fileview_hc.bmp"
+
+IDB_CLASS_VIEW          BITMAP                  "res\\classview.bmp"
+
+IDB_CLASS_VIEW_24       BITMAP                  "res\\classview_hc.bmp"
+
+IDR_EXPLORER            BITMAP                  "res\\explorer.bmp"
+
+IDB_EXPLORER_24         BITMAP                  "res\\explorer_hc.bmp"
+
+IDR_MENU_IMAGES         BITMAP                  "res\\menuimages.bmp"
+
+IDB_MENU_IMAGES_24      BITMAP                  "res\\menuimages_hc.bmp"
+
+IDR_PROPERTIES          BITMAP                  "res\\properties.bmp"
+
+IDB_PROPERTIES_HC       BITMAP                  "res\\properties_hc.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_MAINFRAME_256 TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_SORT TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_SORT_MENU
+    BUTTON      ID_NEW_FOLDER
+END
+
+IDR_EXPLORER TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_PROPERTIES
+END
+
+IDR_MENU_IMAGES TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_WINDOW_MANAGER
+    SEPARATOR
+    BUTTON      ID_WINDOW_CASCADE
+    BUTTON      ID_WINDOW_TILE_HORZ
+    BUTTON      ID_TOOLS_MACRO
+    BUTTON      ID_SORTING_SORTALPHABETIC
+    BUTTON      ID_SORTING_SORTBYTYPE
+    BUTTON      ID_SORTING_SORTBYACCESS
+    BUTTON      ID_SORTING_GROUPBYTYPE
+END
+
+IDR_PROPERTIES TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_EXPAND_ALL
+    BUTTON      ID_SORTPROPERTIES
+    BUTTON      ID_PROPERTIES1
+    BUTTON      ID_PROPERTIES2
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Save As...",                 ID_FILE_SAVEAS
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        POPUP "&Toolbars and Docking Windows"
+        BEGIN
+            MENUITEM "<placeholder>",               ID_VIEW_TOOLBAR
+        END
+        MENUITEM "Init Docking Windows",        ID_VIEW_INITDOCKINGWINDOWS
+    END
+END
+
+IDR_POPUP_EDIT MENU
+BEGIN
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+END
+
+IDR_POPUP_SORT MENU
+BEGIN
+    POPUP "Sorting"
+    BEGIN
+        MENUITEM "&Sort Alphabeticaly",         ID_SORTING_SORTALPHABETIC
+        MENUITEM "Sort by &Type",               ID_SORTING_SORTBYTYPE
+        MENUITEM "Sort by Acc&ess",             ID_SORTING_SORTBYACCESS
+        MENUITEM "Group by t&ype",              ID_SORTING_GROUPBYTYPE
+    END
+END
+
+IDR_POPUP_EXPLORER MENU
+BEGIN
+    POPUP "Explorer"
+    BEGIN
+        MENUITEM "&Open",                       ID_OPEN
+        MENUITEM "Open &With....",              ID_OPEN_WITH
+        MENUITEM SEPARATOR
+        MENUITEM "&Compile",                    ID_DUMMY_COMPILE
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Remove",                     ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties...",              ID_PROPERTIES
+    END
+END
+
+IDR_OUTPUT_POPUP MENU
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "&Copy",                       ID_EDIT_COPY
+        MENUITEM "&Clear",                      ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Hide",                       ID_VIEW_OUTPUTWND
+    END
+END
+
+IDR_HELP_MENU MENU
+BEGIN
+    MENUITEM "&About UDPAnalyzer...",       ID_APP_ABOUT
+END
+
+IDR_THEME_MENU MENU
+BEGIN
+    MENUITEM "Office 2007 (&Blue Style)",   ID_VIEW_APPLOOK_OFF_2007_BLUE
+    MENUITEM "Office 2007 (B&lack Style)",  ID_VIEW_APPLOOK_OFF_2007_BLACK
+    MENUITEM "Office 2007 (&Silver Style)", ID_VIEW_APPLOOK_OFF_2007_SILVER
+    MENUITEM "Office 2007 (&Aqua Style)",   ID_VIEW_APPLOOK_OFF_2007_AQUA
+    MENUITEM "Win&dows 7",                  ID_VIEW_APPLOOK_WINDOWS_7
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "TODO: <Company name>"
+            VALUE "FileDescription", "UDPAnalyzer"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "UDPAnalyzer.exe"
+            VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
+            VALUE "OriginalFilename", "UDPAnalyzer.exe"
+            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+END
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "UDPAnalyzer\n\nUDPAnalyzer\n\n\nUDPAnalyzer.Document\nUDPAnalyzer.Document"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "UDPAnalyzer"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_DIRECT    "Print the active document using current options\nQuick Print"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle Status Bar"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STATUS_PANE1        "Pane 1"
+    IDS_STATUS_PANE2        "Pane 2"
+    IDS_TOOLBAR_STANDARD    "Standard"
+    IDS_TOOLBAR_CUSTOMIZE   "Customize..."
+END
+
+STRINGTABLE
+BEGIN
+    IDS_FILE_VIEW           "File View"
+    IDS_CLASS_VIEW          "Class View"
+    IDS_OUTPUT_WND          "Output"
+    IDS_PROPERTIES_WND      "Properties"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_EXPLORER            "Explorer"
+    IDS_EDIT_MENU           "Edit"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_BUILD_TAB           "Build"
+    IDS_DEBUG_TAB           "Debug"
+    IDS_FIND_TAB            "Find"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#include "res\UDPAnalyzer.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"      // Standard components
+#include "afxprint.rc"    // printing/print preview resources
+#if !defined(_AFXDLL)
+#include "afxribbon.rc"        // MFC ribbon and control bar resources
+#endif
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

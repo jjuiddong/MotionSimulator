@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D4EBB9DD-6ABE-46CE-B408-5A2768F7CC14}</ProjectGuid>
+    <RootNamespace>MotionMonitor</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)..\Bin\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)..\Bin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>D:\Project\MotionSimulator\Simulator\Common\UIComponent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Common\UIComponent\AutoHandle.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\AutoHeapAlloc.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\AutoHModule.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\BPCtrlAnchorMap.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\C3DView.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\ComPortCombo.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\Controller.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\CubeCar.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\DockablePaneBase.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\DockablePaneChildView.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\EnumDevices.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\enumser.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\FileTreeCtrl.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\MemDumpWindow.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\MultiPlotWindow.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\overhauser.hpp" />
+    <ClInclude Include="..\..\..\Common\UIComponent\PlotGlobal.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\PlotWindow.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\SerialObserver.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\UDPObserver.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\UIComponent.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\UIUtiltity.h" />
+    <ClInclude Include="..\..\..\Common\UIComponent\UpdateObserver.h" />
+    <ClInclude Include="C3DSimulView.h" />
+    <ClInclude Include="ChIDPass.h" />
+    <ClInclude Include="ControlBoard.h" />
+    <ClInclude Include="Dirt3Controller.h" />
+    <ClInclude Include="Dirt3View.h" />
+    <ClInclude Include="ExeTracker.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="JoystickView.h" />
+    <ClInclude Include="LauncherConfig.h" />
+    <ClInclude Include="LauncherView.h" />
+    <ClInclude Include="LoginDialog.h" />
+    <ClInclude Include="MachineGunController.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MixingView.h" />
+    <ClInclude Include="EditDlg.h" />
+    <ClInclude Include="PlotInputDlg.h" />
+    <ClInclude Include="PlotView.h" />
+    <ClInclude Include="RealshotController.h" />
+    <ClInclude Include="RealShotView.h" />
+    <ClInclude Include="SimpleController.h" />
+    <ClInclude Include="UDPInputView.h" />
+    <ClInclude Include="MotionMonitor.h" />
+    <ClInclude Include="MotionMonitorDoc.h" />
+    <ClInclude Include="MotionMonitorView.h" />
+    <ClInclude Include="MotionOutputView.h" />
+    <ClInclude Include="MotionWaveView.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="UDPParseView.h" />
+    <ClInclude Include="VarModulationView.h" />
+    <ClInclude Include="X2GraphDialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Common\UIComponent\C3DView.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\ComPortCombo.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\Controller.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\CubeCar.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\DockablePaneBase.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\DockablePaneChildView.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\EnumDevices.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\enumser.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\FileTreeCtrl.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\MemDumpWindow.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\MultiPlotWindow.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\overhauser.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\PlotWindow.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\SerialObserver.cpp" />
+    <ClCompile Include="..\..\..\Common\UIComponent\UIUtiltity.cpp" />
+    <ClCompile Include="C3DSimulView.cpp" />
+    <ClCompile Include="ChIDPass.cpp" />
+    <ClCompile Include="ControlBoard.cpp" />
+    <ClCompile Include="Dirt3Controller.cpp" />
+    <ClCompile Include="Dirt3View.cpp" />
+    <ClCompile Include="ExeTracker.cpp" />
+    <ClCompile Include="Global.cpp" />
+    <ClCompile Include="JoystickView.cpp" />
+    <ClCompile Include="LauncherConfig.cpp" />
+    <ClCompile Include="LauncherView.cpp" />
+    <ClCompile Include="LoginDialog.cpp" />
+    <ClCompile Include="MachineGunController.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MixingView.cpp" />
+    <ClCompile Include="EditDlg.cpp" />
+    <ClCompile Include="PlotInputDlg.cpp" />
+    <ClCompile Include="PlotView.cpp" />
+    <ClCompile Include="RealshotController.cpp" />
+    <ClCompile Include="RealShotView.cpp" />
+    <ClCompile Include="SimpleController.cpp" />
+    <ClCompile Include="UDPInputView.cpp" />
+    <ClCompile Include="MotionMonitor.cpp" />
+    <ClCompile Include="MotionMonitorDoc.cpp" />
+    <ClCompile Include="MotionMonitorView.cpp" />
+    <ClCompile Include="MotionOutputView.cpp" />
+    <ClCompile Include="MotionWaveView.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UDPParseView.cpp" />
+    <ClCompile Include="VarModulationView.cpp" />
+    <ClCompile Include="X2GraphDialog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MotionMonitor.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\classview.bmp" />
+    <Image Include="res\classview_hc.bmp" />
+    <Image Include="res\class_view.ico" />
+    <Image Include="res\class_view_hc.ico" />
+    <Image Include="res\dirt3.ico" />
+    <Image Include="res\explorer.bmp" />
+    <Image Include="res\explorer_hc.bmp" />
+    <Image Include="res\fileview.bmp" />
+    <Image Include="res\fileview_hc.bmp" />
+    <Image Include="res\file_view.ico" />
+    <Image Include="res\file_view_hc.ico" />
+    <Image Include="res\gun.ico" />
+    <Image Include="res\icon1.ico" />
+    <Image Include="res\icon2.ico" />
+    <Image Include="res\icon3.ico" />
+    <Image Include="res\imachinegun_x.ico" />
+    <Image Include="res\machinegun_x.ico" />
+    <Image Include="res\machinegun_x2.ico" />
+    <Image Include="res\menuimages.bmp" />
+    <Image Include="res\menuimages_hc.bmp" />
+    <Image Include="res\MotionMonitor.ico" />
+    <Image Include="res\MotionMonitorDoc.ico" />
+    <Image Include="res\output_wnd.ico" />
+    <Image Include="res\output_wnd_hc.ico" />
+    <Image Include="res\properties.bmp" />
+    <Image Include="res\properties_hc.bmp" />
+    <Image Include="res\properties_wnd.ico" />
+    <Image Include="res\properties_wnd_hc.ico" />
+    <Image Include="res\sort.bmp" />
+    <Image Include="res\sort_hc.bmp" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\Toolbar256.bmp" />
+    <Image Include="UserImages.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MotionMonitor.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\AI\AI.vcxproj">
+      <Project>{c7f9eba2-b553-483b-bc34-d25f1c718255}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\CamCommon\CamCommon.vcxproj">
+      <Project>{5fb1736a-e9fb-448c-8a8a-4c30a90cd87c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Common\Common.vcxproj">
+      <Project>{ef9ca22d-0c8f-42e9-ab66-98bc1a640f10}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Graphic\Graphic.vcxproj">
+      <Project>{3a91e3aa-18df-4733-9f41-ed09a61f97e3}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Motion\Motion.vcxproj">
+      <Project>{298ee8f4-95a2-4a3f-a491-80dc3ed42377}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Network\Network.vcxproj">
+      <Project>{a202aa06-f0ee-4b05-86de-da63b9f146d4}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="MotionMonitor.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

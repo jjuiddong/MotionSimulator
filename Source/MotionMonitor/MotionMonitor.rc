@@ -1,0 +1,1200 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+#include "verrsrc.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Korean (Korea) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "#include ""verrsrc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#include ""res\\MotionMonitor.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""      // Standard components\r\n"
+    "#include ""afxprint.rc""    // printing/print preview resources\r\n"
+    "#if !defined(_AFXDLL)\r\n"
+    "#include ""afxribbon.rc""        // MFC ribbon and control bar resources\r\n"
+    "#endif\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_UDP_GRAPH DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Plot Command Editor",IDC_STATIC1,7,115,67,8
+    CONTROL         "Fixed Mode",IDC_CHECK_FIXEDMODE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,81,115,53,10
+    EDITTEXT        IDC_EDIT_COMMAND,7,125,295,44,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    PUSHBUTTON      "Help",IDC_BUTTON_HELP,200,111,50,14
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,253,111,50,14
+    EDITTEXT        IDC_EDIT1,50,7,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Port",IDC_STATIC,10,10,14,8
+    PUSHBUTTON      "Server Start",IDC_BUTTON_UDP_SERVER_BIND,120,7,50,14
+    LTEXT           "Packet",IDC_STATIC,9,41,21,8
+    LTEXT           "Packet",IDC_STATIC_PACKET,51,41,192,8
+    PUSHBUTTON      "Pause",IDC_BUTTON_PAUSE,143,111,50,14
+    LTEXT           "XML Path",IDC_STATIC,10,27,30,8
+    CONTROL         "",IDC_MFCEDITBROWSE_XMLPATH,"MfcEditBrowse",WS_BORDER | WS_TABSTOP | 0x80,50,24,252,14
+END
+
+IDD_DIALOG_UDP_EDITOR DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_RICHEDIT2_UDP_LOG,"RichEdit20W",WS_BORDER | WS_VSCROLL | WS_TABSTOP | 0x10c4,7,68,295,101
+    EDITTEXT        IDC_EDIT_SERVER_PORT,84,7,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Port",IDC_STATIC,10,10,14,8
+    PUSHBUTTON      "Server Start",IDC_BUTTON_UDP_SERVER_BIND,154,7,50,14
+    LTEXT           "Packet",IDC_STATIC,9,24,21,8
+    LTEXT           "Packet",IDC_STATIC_PACKET,85,24,192,8
+    LTEXT           "Packet Rcv Count",IDC_STATIC,9,36,58,8
+    LTEXT           "Packet",IDC_STATIC_PACKET_COUNT,85,36,192,8
+    PUSHBUTTON      "Clear",IDC_BUTTON_CLEAR,252,53,50,14
+    CONTROL         "Print Packet",IDC_CHECK_PRINT_PACKET,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,58,54,10
+END
+
+IDD_DIALOG_MOTION_OUTPUT DIALOGEX 0, 0, 334, 313
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "COM Port",IDC_STATIC,7,9,32,8
+    COMBOBOX        IDC_COMBO_COM_PORTS,49,7,170,188,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Baud Rate",IDC_STATIC,7,23,34,8
+    COMBOBOX        IDC_COMBO_COM_BAUDRATE,49,21,170,251,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Connect",IDC_BUTTON_CONNECT,171,37,50,14
+    PUSHBUTTON      "Start Send Motion",IDC_BUTTON_START_SEND_MOTION,7,56,78,14
+    CONTROL         "",IDC_STATIC_GRAPH,"Static",SS_BLACKFRAME,7,228,320,78
+    CONTROL         "",IDC_RICHEDIT2_OUTPUT_LOG,"RichEdit20W",WS_BORDER | WS_TABSTOP | 0x1884,7,156,320,56
+    LTEXT           "Output",IDC_STATIC,7,148,24,8
+    CONTROL         "",IDC_RICHEDIT2_LOG,"RichEdit20W",WS_BORDER | WS_VSCROLL | WS_TABSTOP | 0x18c4,7,100,320,42
+    LTEXT           "Input",IDC_STATIC,7,90,18,8
+    PUSHBUTTON      "Start",IDC_BUTTON_START,7,72,50,14
+    PUSHBUTTON      "Stop",IDC_BUTTON_STOP,61,72,50,14
+    PUSHBUTTON      "Origin",IDC_BUTTON_ORIGIN,115,72,50,14
+    PUSHBUTTON      "Emergency",IDC_BUTTON_EMERGENCY,169,72,50,14
+    PUSHBUTTON      "Servo On",IDC_BUTTON_SERVO_ON,223,72,50,14
+    PUSHBUTTON      "Servo Off",IDC_BUTTON_SERVO_OFF,277,72,50,14
+    CONTROL         "Send Only Emergency",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,96,58,86,10
+    LTEXT           "Static",IDC_STATIC_FRAME,189,58,19,8
+END
+
+IDD_DIALOG_MOTION_CONTROL DIALOGEX 0, 0, 309, 295
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,7,142,50,14
+    CONTROL         "",IDC_STATIC_GRAPH,"Static",SS_BLACKFRAME,7,176,295,112
+    CONTROL         "",IDC_RICHEDIT2_COMMAND,"RichEdit20W",WS_BORDER | WS_VSCROLL | WS_TABSTOP | 0x10c4,7,18,295,122
+    LTEXT           "Command Edit",IDC_STATIC,7,7,46,8
+END
+
+IDD_DIALOG_MOTION_INPUT DIALOGEX 0, 0, 381, 430
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,114,32,50,11
+    CONTROL         "",IDC_STATIC_GRAPH,"Static",SS_BLACKFRAME,7,157,367,230
+    CONTROL         "",IDC_RICHEDIT2_COMMAND,"RichEdit20W",WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP | 0x10c4,7,44,367,53
+    LTEXT           "Command Edit",IDC_STATIC,9,34,46,8
+    LTEXT           "Packet",IDC_STATIC,9,9,21,8
+    LTEXT           "Packet",IDC_STATIC_PACKET,85,9,192,8
+    LTEXT           "Packet Rcv Count",IDC_STATIC,9,19,58,8
+    LTEXT           "Count",IDC_STATIC_PACKET_COUNT,85,19,192,8
+    LTEXT           "Plot Command Editor",IDC_STATIC1,7,395,67,8
+    CONTROL         "Fixed Mode",IDC_CHECK_FIXEDMODE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,193,395,53,10
+    EDITTEXT        IDC_EDIT_COMMAND,7,408,367,15,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    PUSHBUTTON      "Help",IDC_BUTTON_HELP,291,391,38,14
+    PUSHBUTTON      "Update",IDC_BUTTON_PLOTUPDATE,332,391,38,14
+    PUSHBUTTON      "Pause",IDC_BUTTON_PLOTPAUSE,250,391,38,14
+    PUSHBUTTON      "...",IDC_BUTTON_MOD_EDITDLG,62,32,47,11
+    LTEXT           "Plot Input String Format",IDC_STATIC,7,103,78,8
+    PUSHBUTTON      "...",IDC_BUTTON_PLOTINPUT_DLG,91,101,47,11
+    EDITTEXT        IDC_EDIT_PLOTINPUT,7,113,367,39,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON_PLOTCMD,80,394,50,11
+    PUSHBUTTON      "Update",IDC_BUTTON_PLOTINPUT_UPDATE,144,101,47,11
+END
+
+IDD_DIALOG_X2GRAPH DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,198,155,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,252,155,50,14
+END
+
+IDD_DIALOG_JOYSTICK DIALOGEX 0, 0, 309, 337
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_STATIC_GRAPH,"Static",SS_BLACKFRAME,6,122,296,208
+    PUSHBUTTON      "JoyStick Monitor Start",IDC_BUTTON_START,6,7,103,14
+    PUSHBUTTON      "Record",IDC_BUTTON_RECORD,252,93,50,14
+    CONTROL         "",IDC_RICHEDIT2_COMMAND,"RichEdit20W",ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_BORDER | WS_VSCROLL | WS_TABSTOP,6,22,296,71
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,6,93,50,14
+    CONTROL         "FixedMode",IDC_CHECK_FIXEDMODE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,111,51,10
+    CONTROL         "JoyStick",IDC_RADIO_JOYSTICK,"Button",BS_AUTORADIOBUTTON | WS_GROUP,123,10,42,10
+    CONTROL         "JoyPad",IDC_RADIO_JOYPAD,"Button",BS_AUTORADIOBUTTON,172,10,39,10
+END
+
+IDD_DIALOG_MWAVE DIALOGEX 0, 0, 309, 439
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_TREE_FILE,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | WS_BORDER | WS_HSCROLL | WS_TABSTOP,7,17,295,87
+    CONTROL         "",IDC_STATIC_GRAPH,"Static",SS_BLACKFRAME,7,330,295,103
+    PUSHBUTTON      "Play",IDC_BUTTON_PLAY,9,285,50,14
+    PUSHBUTTON      "Clear",IDC_BUTTON_CLEAR,250,285,50,14
+    PUSHBUTTON      "Refresh",IDC_BUTTON_REFRESH,7,105,50,14
+    GROUPBOX        "File Information",IDC_STATIC_GROUP,7,120,295,53
+    LTEXT           "MotionWave File Tree",IDC_STATIC,7,7,70,8
+    CONTROL         "",IDC_RICHEDIT2_COMMAND,"RichEdit20W",WS_BORDER | WS_VSCROLL | WS_TABSTOP | 0x10c4,7,182,295,80
+    LTEXT           "Command Editor",IDC_STATIC,7,173,53,8
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,7,263,50,14
+    CONTROL         "",IDC_TREE_FILEINFO,"SysTreeView32",TVS_HASBUTTONS | TVS_LINESATROOT | TVS_FULLROWSELECT | WS_BORDER | WS_HSCROLL | WS_TABSTOP,7,128,295,43
+    CONTROL         "",IDC_SLIDER_PLAYPOS,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | TBS_ENABLESELRANGE | WS_TABSTOP,7,305,294,16
+    GROUPBOX        "Play Control",IDC_STATIC_GROUP2,7,278,295,48,BS_CENTER
+    CONTROL         "1/1",IDC_STATIC_PLAYPOS,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,146,296,35,8
+END
+
+IDD_DIALOG_MIXING DIALOGEX 0, 0, 309, 312
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_RICHEDIT2_COMMAND,"RichEdit20W",WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP | 0x1084,7,41,295,130
+    CONTROL         "",IDC_STATIC_GRAPH,"Static",SS_BLACKFRAME,7,178,295,127
+    PUSHBUTTON      "Start",IDC_BUTTON_UPDATE,7,7,50,14
+    LTEXT           "Command Edit",IDC_STATIC,9,30,46,8
+END
+
+IDD_DIALOG_3D DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_DIALOG_CONTROL DIALOGEX 0, 0, 274, 176
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Dirt3",IDC_RADIO_DIRT3,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,7,31,10
+    CONTROL         "Machine Gun",IDC_RADIO_MG,"Button",BS_AUTORADIOBUTTON,41,7,57,10
+    CONTROL         "Joystick",IDC_RADIO_JOYSTICK,"Button",BS_AUTORADIOBUTTON,105,7,41,10
+    CONTROL         "MWave",IDC_RADIO_MWAVE,"Button",BS_AUTORADIOBUTTON,153,7,40,10
+    LTEXT           "GameState",IDC_STATIC,7,52,36,8
+    LTEXT           "GameState",IDC_STATIC_GAMESTATE,53,52,36,8
+    LTEXT           "GameTime",IDC_STATIC,7,63,34,8
+    LTEXT           "GameTime",IDC_STATIC_GAMETIME,53,63,34,8
+    LTEXT           "GameStage",IDC_STATIC,7,74,38,8
+    LTEXT           "GameStage",IDC_STATIC_GAMESTAGE,53,74,38,8
+    PUSHBUTTON      "Emergency Stop",IDC_BUTTON_EMERGENCY,196,38,68,14
+    LTEXT           "UDP Update ",IDC_STATIC,7,84,42,8
+    LTEXT           "UDP Update Time",IDC_STATIC_UDPUPDATE_TIME,53,84,56,8
+    LTEXT           "State",IDC_STATIC,7,95,18,8
+    LTEXT           "inner State",IDC_STATIC_INSTATE,53,95,36,8
+    PUSHBUTTON      "Start",IDC_BUTTON_START,196,20,50,14
+    CONTROL         "Play Motion Simulator",IDC_CHECK_PLAY_MOTIONSIM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,24,84,10
+END
+
+IDD_DIALOG_UDPPARSE DIALOGEX 0, 0, 309, 448
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_PORT,35,7,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Port",IDC_STATIC,7,10,14,8
+    PUSHBUTTON      "Server Start",IDC_BUTTON_SERVER_START,87,7,50,14
+    EDITTEXT        IDC_EDIT_PROTOCOL,7,34,295,98,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Protocol Command Editor",IDC_STATIC,7,24,81,8
+    EDITTEXT        IDC_EDIT_MIXING,7,145,295,57,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Mixing Command Editor",IDC_STATIC,7,136,75,8
+    CONTROL         "",IDC_LIST_SYMBOL,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,216,295,96
+    LTEXT           "Symbol List",IDC_STATIC,7,207,36,8
+    CONTROL         "Update Symbol",IDC_CHECK_UPDATE_SYMBOL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,57,206,64,10
+    LTEXT           "Roll (radian)",IDC_STATIC,12,329,40,8
+    EDITTEXT        IDC_EDIT_ROLL,56,326,242,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,252,393,50,14
+    LTEXT           "Pitch (radian)",IDC_STATIC,12,345,44,8
+    EDITTEXT        IDC_EDIT_PITCH,56,342,242,14,ES_AUTOHSCROLL
+    LTEXT           "Yaw (radian)",IDC_STATIC,12,361,42,8
+    EDITTEXT        IDC_EDIT_YAW,56,358,242,14,ES_AUTOHSCROLL
+    GROUPBOX        "Parameter Setting",IDC_STATIC_GROUP,7,317,295,75
+    LTEXT           "Heave",IDC_STATIC,12,377,22,8
+    EDITTEXT        IDC_EDIT_HEAVE,56,374,242,14,ES_AUTOHSCROLL
+END
+
+IDD_DIALOG_PLOT DIALOGEX 0, 0, 309, 364
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Plot Input String Format",IDC_STATIC,7,7,78,8
+    EDITTEXT        IDC_EDIT_PLOTINPUT,7,16,295,21,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Plot Command Editor",IDC_STATIC,7,40,67,8
+    EDITTEXT        IDC_EDIT_PLOTCMD,7,50,295,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,7,67,50,14
+    PUSHBUTTON      "New Plot Window",IDC_BUTTON_NEWPLOT,232,67,70,14
+    CONTROL         "",IDC_STATIC_PLOT,"Static",SS_BLACKFRAME,7,81,295,276
+    PUSHBUTTON      "...",IDC_BUTTON_PLOTINPUT,94,6,50,10
+    PUSHBUTTON      "...",IDC_BUTTON_PLOTCMD,93,40,50,10
+END
+
+IDD_DIALOG_LAUNCHER DIALOGEX 0, 0, 309, 347
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "GameStart",IDC_BUTTON_GAMESTART,121,309,67,30
+    LTEXT           "Play Level",IDC_STATIC,7,82,33,8
+    LTEXT           "Check Camera",IDC_STATIC,7,105,47,8
+    PUSHBUTTON      "Player1 Camera",IDC_BUTTON_PLAYER1,84,101,63,14
+    PUSHBUTTON      "Player2 Camera",IDC_BUTTON_PLAYER2,159,101,63,14
+    LTEXT           "Camera Sensitivity",IDC_STATIC,7,143,60,8
+    CONTROL         "",IDC_SLIDER_CAM_SENS,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,115,140,110,15
+    EDITTEXT        IDC_EDIT_CAM_SENS,228,141,27,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Camera Adjustment",IDC_STATIC,7,182,64,8
+    PUSHBUTTON      "Player 1",IDC_BUTTON_CAM_ADJUSTMENT_P1,84,179,50,14
+    PUSHBUTTON      "Player 2",IDC_BUTTON_CAM_ADJUSTMENT_P2,140,179,50,14
+    LTEXT           "Game Count",IDC_STATIC,7,253,40,8
+    COMBOBOX        IDC_COMBO_DIFFICULT2,84,80,63,85,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Player 1",IDC_STATIC,86,144,27,8
+    CONTROL         "",IDC_SLIDER_CAM_SENS2,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,115,158,110,15
+    EDITTEXT        IDC_EDIT_CAM_SENS2,228,159,27,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Player 2",IDC_STATIC,86,161,27,8
+    LTEXT           "Credit",IDC_STATIC,7,205,20,8
+    EDITTEXT        IDC_EDIT_CREDIT,85,201,40,14,ES_AUTOHSCROLL
+    LTEXT           "Coin",IDC_STATIC,7,221,15,8
+    EDITTEXT        IDC_EDIT_COIN,85,217,40,14,ES_AUTOHSCROLL
+    LTEXT           "Game Cost",IDC_STATIC,7,237,36,8
+    EDITTEXT        IDC_EDIT_COINPERGAME,85,233,40,14,ES_AUTOHSCROLL
+    LTEXT           "MainBoard Check",IDC_STATIC,7,123,56,8
+    PUSHBUTTON      "Check",IDC_BUTTON_BOARDCHECK,84,121,50,14
+    LTEXT           "Game Count",IDC_STATIC_GAME_COUNT,85,253,40,8
+    LTEXT           "Credit Count",IDC_STATIC,7,265,42,8
+    LTEXT           "Credit Count",IDC_STATIC_CREDIT_COUNT,85,265,42,8
+    PUSHBUTTON      "Change ID / PassWord",IDC_BUTTON_CHANGE_ACCOUNT,84,276,92,14
+    PUSHBUTTON      "Help",IDC_BUTTON_HELP,186,276,50,14
+    PUSHBUTTON      "Active",IDC_BUTTON_BOARDACTIVE,140,121,50,14
+    LTEXT           "ver 1.01",IDC_STATIC,7,331,30,8
+END
+
+IDD_DIALOG_LOGIN DIALOGEX 0, 0, 187, 66
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Admin Login"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_ID,54,7,127,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PASS,54,23,127,14,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Login",IDOK,130,45,50,14
+    LTEXT           "Admin Name",IDC_STATIC,7,9,40,8
+    LTEXT           "PassWord",IDC_STATIC,7,26,33,8
+END
+
+IDD_DIALOG_EDIT DIALOGEX 0, 0, 309, 218
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Modulator Editor"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,7,7,295,185,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,199,197,50,14
+    PUSHBUTTON      "Close",IDC_BUTTON_CLOSE,252,197,50,14
+END
+
+IDD_DIALOG_PLOTINPUT DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_PLOTINPUT_FORMAT,7,7,295,78,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    PUSHBUTTON      "Close",IDC_BUTTON_CLOSE,252,155,50,14
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,196,155,50,14
+    EDITTEXT        IDC_EDIT_INPUTSTR1,7,90,295,14,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_EDIT_INPUTSTR2,7,106,295,14,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_EDIT_INPUTSTR3,7,121,295,14,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_EDIT_INPUTSTR4,7,137,295,14,ES_AUTOHSCROLL | WS_DISABLED
+END
+
+IDD_DIALOG_SIMUL DIALOGEX 0, 0, 309, 283
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_DIALOG_DIRT3 DIALOGEX 0, 0, 309, 499
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Start",IDC_BUTTON_START,108,156,71,21
+    CONTROL         "Motion Simulation",IDC_CHECK_MOTION_SIM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,112,145,71,10
+    LTEXT           "State 1 : ",IDC_STATIC,111,232,31,8
+    LTEXT           "State 2 :",IDC_STATIC,111,242,29,8
+    LTEXT           "State 1",IDC_STATIC_STATE1,147,232,147,8
+    LTEXT           "State 1",IDC_STATIC_STATE2,147,242,147,8
+    PUSHBUTTON      "Save GameData",IDC_BUTTON_GAMEDATASAVE,212,253,71,16
+    CONTROL         "4 Axis",IDC_RADIO_4AXIS,"Button",BS_AUTORADIOBUTTON | WS_GROUP,86,299,31,10
+    CONTROL         "3 Axis",IDC_RADIO_3AXIS,"Button",BS_AUTORADIOBUTTON,123,299,32,10
+    CONTROL         "",IDC_SLIDER_ACTION_RANGE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,86,313,145,15
+    EDITTEXT        IDC_EDIT_ACTUATOR,237,313,40,14,ES_AUTOHSCROLL
+    LTEXT           "Actuator Range",IDC_STATIC,24,316,52,8
+    LTEXT           "Axis Control",IDC_STATIC,24,300,40,8
+    GROUPBOX        "Option",IDC_STATIC,18,268,265,103
+    LTEXT           "State 0 : ",IDC_STATIC,111,222,31,8
+    LTEXT           "State 1",IDC_STATIC_STATE0,147,222,147,8
+    LTEXT           "Actuator Speed",IDC_STATIC,23,354,51,8
+    CONTROL         "",IDC_SLIDER_ACTION_SPEED,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,86,351,145,15
+    EDITTEXT        IDC_EDIT_ACTUATOR_SPEED,237,351,40,14,ES_AUTOHSCROLL
+    LTEXT           "Play Time",IDC_STATIC,25,284,31,8
+    EDITTEXT        IDC_EDIT_PLAYTIME,84,281,52,14,ES_AUTOHSCROLL
+    LTEXT           "Seconds",IDC_STATIC,144,284,28,8
+    LTEXT           "Play Time :",IDC_STATIC,111,252,36,8
+    LTEXT           "0",IDC_STATIC_PLAYTIME,152,252,56,8
+    CONTROL         "",IDC_SLIDER_YAW_RANGE,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,86,332,145,15
+    EDITTEXT        IDC_EDIT_ACTUATOR_YAW,237,332,40,14,ES_AUTOHSCROLL
+    LTEXT           "Yaw Range",IDC_STATIC,23,335,37,8
+    LTEXT           "(Roll,Pitch,Heave)",IDC_STATIC,23,324,59,8
+    LTEXT           "Static",IDC_STATIC_FRAME,19,253,79,8
+    CONTROL         "Auto Start",IDC_CHECK_AUTOSTART,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,190,145,49,10
+    PUSHBUTTON      "Emergency Stop",IDC_BUTTON_EMERGENCY,108,183,71,21
+END
+
+IDD_DIALOG_MODULATION DIALOGEX 0, 0, 296, 414
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_SCRIPT,7,58,268,54,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Input Variable",IDC_STATIC,7,29,46,8
+    EDITTEXT        IDC_EDIT_INPUTVAR,67,26,207,14,ES_AUTOHSCROLL
+    LTEXT           "Output Variable",IDC_STATIC,7,46,51,8
+    EDITTEXT        IDC_EDIT_OUTPUTVAR,67,42,207,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Update",IDC_BUTTON_UPDATE,227,393,50,14
+    PUSHBUTTON      "Start",IDC_BUTTON_START,7,7,50,14
+    EDITTEXT        IDC_EDIT_SCRIPT2,7,149,268,54,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Input Variable",IDC_STATIC,7,121,46,8
+    EDITTEXT        IDC_EDIT_INPUTVAR2,67,117,207,14,ES_AUTOHSCROLL
+    LTEXT           "Output Variable",IDC_STATIC,7,138,51,8
+    EDITTEXT        IDC_EDIT_OUTPUTVAR2,67,133,207,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SCRIPT3,7,240,268,54,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Input Variable",IDC_STATIC,7,212,46,8
+    EDITTEXT        IDC_EDIT_INPUTVAR3,67,208,207,14,ES_AUTOHSCROLL
+    LTEXT           "Output Variable",IDC_STATIC,7,228,51,8
+    EDITTEXT        IDC_EDIT_OUTPUTVAR3,67,224,207,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SCRIPT4,8,332,268,54,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "Input Variable",IDC_STATIC,8,304,46,8
+    EDITTEXT        IDC_EDIT_INPUTVAR4,68,300,207,14,ES_AUTOHSCROLL
+    LTEXT           "Output Variable",IDC_STATIC,8,320,51,8
+    EDITTEXT        IDC_EDIT_OUTPUTVAR4,68,316,207,14,ES_AUTOHSCROLL
+END
+
+IDD_DIALOG_CHANGEIDPASS DIALOGEX 0, 0, 205, 96
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Change ID / Pass Word"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_NEWID,91,16,104,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_NEWPASS,91,33,104,14,ES_PASSWORD | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_NEWPASS_CONFIRM,91,51,104,14,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,93,75,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,147,75,50,14
+    LTEXT           "New ID",IDC_STATIC,7,20,24,8
+    LTEXT           "New Pass Word",IDC_STATIC,7,36,51,8
+    LTEXT           "Confirm New Pass Word",IDC_STATIC,7,54,78,8
+END
+
+IDD_DIALOG_REALSHOT DIALOGEX 0, 0, 322, 208
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Start",IDC_BUTTON_START,22,25,186,54
+    LTEXT           "",IDC_STATIC1,23,184,292,8
+    PUSHBUTTON      "Calibration",IDC_BUTTON_CALIBRATION,21,90,187,46
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG_UDP_GRAPH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DIALOG_UDP_EDITOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DIALOG_MOTION_OUTPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 327
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 306
+    END
+
+    IDD_DIALOG_MOTION_CONTROL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 288
+    END
+
+    IDD_DIALOG_MOTION_INPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 374
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 423
+    END
+
+    IDD_DIALOG_X2GRAPH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DIALOG_JOYSTICK, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 330
+    END
+
+    IDD_DIALOG_MWAVE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 432
+    END
+
+    IDD_DIALOG_MIXING, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 305
+    END
+
+    IDD_DIALOG_3D, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DIALOG_CONTROL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 267
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DIALOG_UDPPARSE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 441
+    END
+
+    IDD_DIALOG_PLOT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 357
+    END
+
+    IDD_DIALOG_LAUNCHER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 339
+    END
+
+    IDD_DIALOG_LOGIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_DIALOG_EDIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 211
+    END
+
+    IDD_DIALOG_PLOTINPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DIALOG_SIMUL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 276
+    END
+
+    IDD_DIALOG_DIRT3, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 492
+    END
+
+    IDD_DIALOG_MODULATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 289
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 407
+    END
+
+    IDD_DIALOG_CHANGEIDPASS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 198
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 89
+    END
+
+    IDD_DIALOG_REALSHOT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 315
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 201
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DIALOG_UDP_GRAPH DLGINIT
+BEGIN
+    IDC_MFCEDITBROWSE_XMLPATH, 0x37c, 42, 0
+0x4d3c, 0x4346, 0x6445, 0x7469, 0x7242, 0x776f, 0x6573, 0x4d5f, 0x646f, 
+0x3e65, 0x3c31, 0x4d2f, 0x4346, 0x6445, 0x7469, 0x7242, 0x776f, 0x6573, 
+0x4d5f, 0x646f, 0x3e65, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\dirt3.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG_MODULATION AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG_JOYSTICK AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // Korean (Korea) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About MotionMonitor"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    LTEXT           "MotionMonitor, Version 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2015",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MotionMonitorTYPE   ICON                    "res\\MotionMonitorDoc.ico"
+
+IDI_FILE_VIEW           ICON                    "res\\file_view.ico"
+
+IDI_FILE_VIEW_HC        ICON                    "res\\file_view_hc.ico"
+
+IDI_CLASS_VIEW          ICON                    "res\\class_view.ico"
+
+IDI_CLASS_VIEW_HC       ICON                    "res\\class_view_hc.ico"
+
+IDI_OUTPUT_WND          ICON                    "res\\output_wnd.ico"
+
+IDI_OUTPUT_WND_HC       ICON                    "res\\output_wnd_hc.ico"
+
+IDI_PROPERTIES_WND      ICON                    "res\\properties_wnd.ico"
+
+IDI_PROPERTIES_WND_HC   ICON                    "res\\properties_wnd_hc.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+IDR_MAINFRAME_256       BITMAP                  "res\\Toolbar256.bmp"
+
+IDR_SORT                BITMAP                  "res\\sort.bmp"
+
+IDB_SORT_24             BITMAP                  "res\\sort_hc.bmp"
+
+IDB_FILE_VIEW           BITMAP                  "res\\fileview.bmp"
+
+IDB_FILE_VIEW_24        BITMAP                  "res\\fileview_hc.bmp"
+
+IDB_CLASS_VIEW          BITMAP                  "res\\classview.bmp"
+
+IDB_CLASS_VIEW_24       BITMAP                  "res\\classview_hc.bmp"
+
+IDR_EXPLORER            BITMAP                  "res\\explorer.bmp"
+
+IDB_EXPLORER_24         BITMAP                  "res\\explorer_hc.bmp"
+
+IDR_MENU_IMAGES         BITMAP                  "res\\menuimages.bmp"
+
+IDB_MENU_IMAGES_24      BITMAP                  "res\\menuimages_hc.bmp"
+
+IDR_PROPERTIES          BITMAP                  "res\\properties.bmp"
+
+IDB_PROPERTIES_HC       BITMAP                  "res\\properties_hc.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_MAINFRAME_256 TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_SORT TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_SORT_MENU
+    BUTTON      ID_NEW_FOLDER
+END
+
+IDR_EXPLORER TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_PROPERTIES
+END
+
+IDR_MENU_IMAGES TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_WINDOW_MANAGER
+    SEPARATOR
+    BUTTON      ID_WINDOW_CASCADE
+    BUTTON      ID_WINDOW_TILE_HORZ
+    BUTTON      ID_TOOLS_MACRO
+    BUTTON      ID_SORTING_SORTALPHABETIC
+    BUTTON      ID_SORTING_SORTBYTYPE
+    BUTTON      ID_SORTING_SORTBYACCESS
+    BUTTON      ID_SORTING_GROUPBYTYPE
+END
+
+IDR_PROPERTIES TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_EXPAND_ALL
+    BUTTON      ID_SORTPROPERTIES
+    BUTTON      ID_PROPERTIES1
+    BUTTON      ID_PROPERTIES2
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        POPUP "&Toolbars and Docking Windows"
+        BEGIN
+            MENUITEM "<placeholder>",               ID_VIEW_TOOLBAR
+        END
+        MENUITEM "View Initialize",             ID_VIEW_VIEWINITIALIZE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About MotionMonitor...",     ID_APP_ABOUT
+    END
+END
+
+IDR_POPUP_EDIT MENU
+BEGIN
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+END
+
+IDR_POPUP_SORT MENU
+BEGIN
+    POPUP "Sorting"
+    BEGIN
+        MENUITEM "&Sort Alphabeticaly",         ID_SORTING_SORTALPHABETIC
+        MENUITEM "Sort by &Type",               ID_SORTING_SORTBYTYPE
+        MENUITEM "Sort by Acc&ess",             ID_SORTING_SORTBYACCESS
+        MENUITEM "Group by t&ype",              ID_SORTING_GROUPBYTYPE
+    END
+END
+
+IDR_POPUP_EXPLORER MENU
+BEGIN
+    POPUP "Explorer"
+    BEGIN
+        MENUITEM "&Open",                       ID_OPEN
+        MENUITEM "Open &With....",              ID_OPEN_WITH
+        MENUITEM SEPARATOR
+        MENUITEM "&Compile",                    ID_DUMMY_COMPILE
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Remove",                     ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties...",              ID_PROPERTIES
+    END
+END
+
+IDR_OUTPUT_POPUP MENU
+BEGIN
+    POPUP "Popup"
+    BEGIN
+        MENUITEM "&Copy",                       ID_EDIT_COPY
+        MENUITEM "&Clear",                      ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "&Hide",                       ID_VIEW_OUTPUTWND
+    END
+END
+
+IDR_HELP_MENU MENU
+BEGIN
+    MENUITEM "&About MotionMonitor...",     ID_APP_ABOUT
+END
+
+IDR_THEME_MENU MENU
+BEGIN
+    MENUITEM "Office 2007 (&Blue Style)",   ID_VIEW_APPLOOK_OFF_2007_BLUE
+    MENUITEM "Office 2007 (B&lack Style)",  ID_VIEW_APPLOOK_OFF_2007_BLACK
+    MENUITEM "Office 2007 (&Silver Style)", ID_VIEW_APPLOOK_OFF_2007_SILVER
+    MENUITEM "Office 2007 (&Aqua Style)",   ID_VIEW_APPLOOK_OFF_2007_AQUA
+    MENUITEM "Win&dows 7",                  ID_VIEW_APPLOOK_WINDOWS_7
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "GDI Korea"
+            VALUE "FileDescription", "MotionMonitor"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "MotionMonitor.exe"
+            VALUE "LegalCopyright", "GDI Korea.  All rights reserved."
+            VALUE "OriginalFilename", "MotionMonitor.exe"
+            VALUE "ProductName", "Motion Monitor"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+END
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "MotionMonitor\n\nMotionMonitor\n\n\nMotionMonitor.Document\nMotionMonitor.Document"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "MotionMonitor"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_DIRECT    "Print the active document using current options\nQuick Print"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle Status Bar"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STATUS_PANE1        "Pane 1"
+    IDS_STATUS_PANE2        "Pane 2"
+    IDS_TOOLBAR_STANDARD    "Standard"
+    IDS_TOOLBAR_CUSTOMIZE   "Customize..."
+END
+
+STRINGTABLE
+BEGIN
+    IDS_FILE_VIEW           "File View"
+    IDS_CLASS_VIEW          "Class View"
+    IDS_OUTPUT_WND          "Output"
+    IDS_PROPERTIES_WND      "Properties"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_EXPLORER            "Explorer"
+    IDS_EDIT_MENU           "Edit"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_BUILD_TAB           "Build"
+    IDS_DEBUG_TAB           "Debug"
+    IDS_FIND_TAB            "Find"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#include "res\MotionMonitor.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"      // Standard components
+#include "afxprint.rc"    // printing/print preview resources
+#if !defined(_AFXDLL)
+#include "afxribbon.rc"        // MFC ribbon and control bar resources
+#endif
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
