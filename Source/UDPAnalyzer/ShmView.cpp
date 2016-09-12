@@ -74,6 +74,7 @@ BEGIN_MESSAGE_MAP(CShmView, CDockablePaneChildView)
 	ON_NOTIFY(TVN_SELCHANGED, IDC_TREE_FILE, &CShmView::OnSelchangedTreeFile)
 	ON_WM_SIZE()
 	ON_BN_CLICKED(IDC_CHECK_SYMTABLE, &CShmView::OnBnClickedCheckSymtable)
+	ON_BN_CLICKED(IDC_BUTTON_OPEN_PROTOCOL, &CShmView::OnBnClickedButtonOpenProtocol)
 END_MESSAGE_MAP()
 
 
@@ -146,9 +147,11 @@ void CShmView::OnBnClickedButtonOpen()
 			return;
 		}
 
+		m_protocolParser.Read("shmprotocol.txt", "\n");
+
 		const string shmName = wstr2str(m_ShmName.GetBuffer(0));
 
-		if (!m_shmMem.Init(shmName))
+		if (!m_shmMem.Init(shmName, m_readMemorySize))
 		{
 			::AfxMessageBox(L"Error!! Open Shared Memory Name \n");
 			return;
@@ -181,6 +184,12 @@ void CShmView::OnBnClickedButtonOpen()
 		m_OpenButton.SetWindowTextW(L"Close");
 		SetBackgroundColor(g_blueColor);
 	}	
+}
+
+
+void CShmView::OnBnClickedButtonOpenProtocol()
+{
+	ShellExecuteW(m_hWnd, L"open", L"notepad", L"shmprotocol.txt", NULL, SW_SHOW);
 }
 
 
@@ -221,6 +230,31 @@ void CShmView::Update(const float deltaSeconds)
 		}
 		else
 		{
+			int i = 0;
+			int index = 0;
+			const int bufferLen = m_readShmMem.m_memoryByteSyze;
+			const char *pmem = (const char*)m_readShmMem.m_memPtr;
+			for each (auto &field in m_protocolParser.m_fields)
+			{
+				if (index > bufferLen)
+					break;
+
+				script::sFieldData data;
+				ZeroMemory(data.buff, sizeof(data));
+				memcpy(data.buff, pmem, MIN(sizeof(data.buff), field.bytes));
+				data.type = field.type;
+
+				const string id = format("$%d", i + 1); // $1 ,$2, $3 ~
+				const string oldId = format("@%d", i + 1); // @1, @2, @3 ~
+
+				script::g_symbols[oldId] = script::g_symbols[id]; // 전 데이타를 저장한다. 
+				script::g_symbols[id] = data;
+
+				index += field.bytes;
+				pmem += field.bytes;
+				++i;
+			}
+
 			if (m_dumpWindow)
 				m_dumpWindow->UpdateDump((char*)m_readShmMem.m_memPtr, m_readMemorySize);
 		}
@@ -609,4 +643,3 @@ CShmView::STATE CShmView::ChangeState(const STATE nextState)
 
 	return m_state;
 }
-

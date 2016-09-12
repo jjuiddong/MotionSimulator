@@ -35,6 +35,7 @@ public:
 	int m_updateFPS; // 1초당 업데이트된 횟수
 	int m_incRecordLength;
 	cShmMap<script::sFieldData> m_shmSymbols;
+	cProtocolParser m_protocolParser;
 	STATE m_state;
 	cShmmem m_shmMem;
 	cShmmem m_playShmMem;
@@ -73,4 +74,5 @@ public:
 	BOOL m_IsShmSymbolTable;
 	afx_msg void OnBnClickedCheckSymtable();
 	int m_readMemorySize;
+	afx_msg void OnBnClickedButtonOpenProtocol();
 };

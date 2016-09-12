@@ -167,6 +167,7 @@
 #define IDC_BUTTON_OPEN                 1069
 #define IDC_STATIC_FPS                  1070
 #define IDC_EDIT_MEMSIZE                1071
+#define IDC_BUTTON_OPEN_PROTOCOL        1071
 #define IDC_STATIC_RECORD_TIME          1072
 #define IDC_STATIC_FILENAME             1073
 #define IDC_STATIC_PLAYTIME             1074

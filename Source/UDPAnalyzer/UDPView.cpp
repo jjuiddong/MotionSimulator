@@ -134,7 +134,7 @@ void CUDPView::UpdateUDP(const char *buffer, const int bufferLen)
 
 		script::sFieldData data;
 		ZeroMemory(data.buff, sizeof(data));
-		memcpy(data.buff, pmem, field.bytes);
+		memcpy(data.buff, pmem, MIN(sizeof(data.buff), field.bytes));
 		data.type = field.type;
 
 		const string id = format("$%d", i + 1); // $1 ,$2, $3 ~
