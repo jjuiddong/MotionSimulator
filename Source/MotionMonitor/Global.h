@@ -146,6 +146,3 @@ void SpaceCharToZeroChar(string &str);
 bool WriteCameraSensitive(const string &fileName, const float sens);
 bool ReadCameraSensitive(const string &fileName, OUT float &sens);
 
-
-class cPlotInputParser;
-void ParsePlotInputStringFormat(const string &str, OUT vector<cPlotInputParser> &out);

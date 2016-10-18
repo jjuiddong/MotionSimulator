@@ -302,7 +302,7 @@ void cDirt3Controller::PlayCountUp()
 	}
 	else
 	{
-		// playCount를 1증가해서 저장한다.
+		// playCount를 1증가해서 저장한다. over wright
 		ofstream tmpFile("temp.cnt");
 		tmpFile << to_iso_extended_string(curDate) << " " << oldPlayCount + 1 << " " << oldErrCount << endl;
 	}
@@ -452,6 +452,7 @@ void cDirt3Controller::WriteGameData()
 			errCount += dataErrCount;
 			strList.pop_back();
 
+			// remove last data
 			ofstream wrFile;
 			wrFile.open("game.csv");
 			for each (auto &str in strList)

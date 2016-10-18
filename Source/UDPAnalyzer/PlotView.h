@@ -25,7 +25,8 @@ protected:
 	bool m_isStart;
 	bool m_addPlotView; // true 이면, 환경변수에 값을 저장하지 않는다. 환경변수는 처음에 생성된 PlotView만 저장된다.
 
-	cPlotInputParser m_parser;
+	//cPlotInputParser m_parser;
+	vector<cPlotInputParser> m_plotInputParser;
 
 
 protected:
@@ -40,7 +41,7 @@ public:
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	virtual BOOL OnInitDialog();
 	CEdit m_PlotInputCommandEditor;
-	CEdit m_PlotInputOut;
+	//CEdit m_PlotInputOut;
 	CEdit m_PlotCommandEditor;
 	afx_msg void OnDestroy();
 	afx_msg void OnBnClickedButtonNewplotwindow();

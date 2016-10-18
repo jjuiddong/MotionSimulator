@@ -29,7 +29,7 @@ void CPlotView::DoDataExchange(CDataExchange* pDX)
 	CDockablePaneChildView::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_EDIT_PLOTINPUT, m_PlotInputCommandEditor);
 	DDX_Control(pDX, IDC_EDIT_COMMAND, m_PlotCommandEditor);
-	DDX_Control(pDX, IDC_EDIT_PLOTINPUT_OUT, m_PlotInputOut);
+	//DDX_Control(pDX, IDC_EDIT_PLOTINPUT_OUT, m_PlotInputOut);
 }
 
 
@@ -37,7 +37,7 @@ void CPlotView::DoDataExchange(CDataExchange* pDX)
 BEGIN_ANCHOR_MAP(CPlotView)
 	ANCHOR_MAP_ENTRY(IDC_STATIC_PLOT, ANF_LEFT | ANF_RIGHT | ANF_TOP | ANF_BOTTOM)
 	ANCHOR_MAP_ENTRY(IDC_EDIT_PLOTINPUT, ANF_LEFT | ANF_RIGHT | ANF_TOP)
-	ANCHOR_MAP_ENTRY(IDC_EDIT_PLOTINPUT_OUT, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	//ANCHOR_MAP_ENTRY(IDC_EDIT_PLOTINPUT_OUT, ANF_LEFT | ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_EDIT_COMMAND, ANF_LEFT | ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_BUTTON_NEWPLOTWINDOW, ANF_RIGHT | ANF_TOP)
 END_ANCHOR_MAP()
@@ -93,12 +93,13 @@ void CPlotView::OnBnClickedButtonUpdate()
 
 	CString command;
 	m_PlotCommandEditor.GetWindowTextW(command);
-	m_multiPlotWindows->ProcessPlotCommand(command);
+	m_multiPlotWindows->ProcessPlotCommand(command, 4);
 	m_multiPlotWindows->SetFixedWidthMode(true);
 
 	CString inputCmd;
 	m_PlotInputCommandEditor.GetWindowTextW(inputCmd);
-	m_parser.ParseStr( wstr2str((LPCTSTR)inputCmd) );
+	//m_parser.ParseStr( wstr2str((LPCTSTR)inputCmd) );
+	ParsePlotInputStringFormat(wstr2str((LPCTSTR)inputCmd), m_plotInputParser);
 
 	m_isStart = true;
 }
@@ -131,10 +132,17 @@ void CPlotView::Update(const float deltaSeconds)
 
 	if (m_incTime > elapseT)
 	{
-		const string plotInputOut = m_parser.Execute();
-		m_PlotInputOut.SetWindowTextW(str2wstr(plotInputOut).c_str());
+// 		const string plotInputOut = m_parser.Execute();
+// 		m_PlotInputOut.SetWindowTextW(str2wstr(plotInputOut).c_str());
+// 		m_multiPlotWindows->SetString(plotInputOut.c_str());
+// 		m_multiPlotWindows->DrawGraph(m_incTime);
 
-		m_multiPlotWindows->SetString(plotInputOut.c_str());
+		for (u_int i = 0; i < m_plotInputParser.size(); ++i)
+		{
+			const string str = m_plotInputParser[i].Execute();
+			m_multiPlotWindows->SetString(str.c_str(), i);
+		}
+
 		m_multiPlotWindows->DrawGraph(m_incTime);
 		m_incTime = 0;
 	}
