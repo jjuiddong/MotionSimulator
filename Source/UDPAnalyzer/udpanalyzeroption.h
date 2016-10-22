@@ -21,9 +21,11 @@ public:
 	string m_rollCmd;
 	string m_pitchCmd;
 	string m_yawCmd;
+	string m_heaveCmd;
 	string m_roll2Cmd;
 	string m_pitch2Cmd;
 	string m_yaw2Cmd;
+	string m_heave2Cmd;
 	string m_plotCmd;
 
 	string m_mixingCmd;

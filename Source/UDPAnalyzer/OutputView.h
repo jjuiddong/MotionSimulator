@@ -20,7 +20,6 @@ public:
 
 
 protected:
-	CMultiPlotWindow *m_multiPlotWindows;
 	float m_incTime;
 	bool m_isStart;
 	float m_incSerialTime;
@@ -31,9 +30,11 @@ protected:
 	cMathParser m_rollParser;
 	cMathParser m_pitchParser;
 	cMathParser m_yawParser;
+	cMathParser m_heaveParser;
 	cMathParser m_roll2Parser;
 	cMathParser m_pitch2Parser;
 	cMathParser m_yaw2Parser;
+	cMathParser m_heave2Parser;
 
 	mathscript::cMathInterpreter m_interpreter;
 
@@ -61,16 +62,24 @@ public:
 	CString m_RollCommand;
 	CString m_PitchCommand;
 	CString m_YawCommand;
+	CString m_HeaveCommand;
 	CString m_Roll2Command;
 	CString m_Pitch2Command;
 	CString m_Yaw2Command;
-	CEdit m_PlotCommand;
+	CString m_Heave2Command;
 	int m_SendType;
 	afx_msg void OnBnClickedButton3dupdate();
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnBnClickedButtonPlotUpdate();
 	afx_msg void OnBnClickedButtonUpdateSendformat();
 	CButton m_ConnectButton;
 	afx_msg void OnDestroy();
+	afx_msg void OnBnClickedRadioYawRollPitch1();
+	afx_msg void OnBnClickedRadioRollYawPitch1();
+	int m_radio3DCalcOrder1;
+	int m_radio3DCalcOrder2;
+	afx_msg void OnBnClickedRadioYawRollPitch2();
+	afx_msg void OnBnClickedRadioRollYawPitch2();
+	BOOL m_checkSendBinary;
+	afx_msg void OnBnClickedCheckSendBinary();
 };

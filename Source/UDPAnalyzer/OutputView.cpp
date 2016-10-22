@@ -12,16 +12,20 @@ COutputView::COutputView(CWnd* pParent /*=NULL*/)
 	, m_RollCommand(_T(""))
 	, m_PitchCommand(_T(""))
 	, m_YawCommand(_T(""))
+	, m_HeaveCommand(_T(""))
 	, m_Roll2Command(_T(""))
 	, m_Pitch2Command(_T(""))
 	, m_Yaw2Command(_T(""))
-	, m_multiPlotWindows(NULL)
+	, m_Heave2Command(_T(""))
 	, m_incTime(0)
 	, m_isStart(false)
 	, m_SendType(2)
 	, m_SendFormat(_T(""))
 	, m_incSerialTime(0)
 	, m_incUDPTime(0)
+	, m_radio3DCalcOrder1(0)
+	, m_radio3DCalcOrder2(0)
+	, m_checkSendBinary(FALSE)
 {
 }
 
@@ -38,32 +42,38 @@ void COutputView::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_ROLL, m_RollCommand);
 	DDX_Text(pDX, IDC_EDIT_PITCH, m_PitchCommand);
 	DDX_Text(pDX, IDC_EDIT_YAW, m_YawCommand);
+	DDX_Text(pDX, IDC_EDIT_HEAVE, m_HeaveCommand);
 	DDX_Text(pDX, IDC_EDIT_ROLL2, m_Roll2Command);
 	DDX_Text(pDX, IDC_EDIT_PITCH2, m_Pitch2Command);
 	DDX_Text(pDX, IDC_EDIT_YAW2, m_Yaw2Command);
-	DDX_Control(pDX, IDC_EDIT_PLOT_COMMAND, m_PlotCommand);
+	DDX_Text(pDX, IDC_EDIT_HEAVE2, m_Heave2Command);
 	DDX_Radio(pDX, IDC_RADIO_SERIAL, m_SendType);
 	DDX_Text(pDX, IDC_EDIT_SENDCOMMAND, m_SendFormat);
 	DDX_Control(pDX, IDC_STATIC_SENDDATA, m_SendString);
 	DDX_Control(pDX, IDC_BUTTON_CONNECT, m_ConnectButton);
 	DDX_Control(pDX, IDC_EDIT_PORT, m_EditUDPPort);
+	DDX_Radio(pDX, IDC_RADIO_YAW_ROLL_PITCH1, m_radio3DCalcOrder1);
+	DDX_Radio(pDX, IDC_RADIO_YAW_ROLL_PITCH2, m_radio3DCalcOrder2);
+	DDX_Check(pDX, IDC_CHECK_SEND_BINARY, m_checkSendBinary);
 }
 
 
 BEGIN_ANCHOR_MAP(COutputView)
-	ANCHOR_MAP_ENTRY(IDC_STATIC_PLOT, ANF_LEFT | ANF_RIGHT | ANF_TOP | ANF_BOTTOM)
-	ANCHOR_MAP_ENTRY(IDC_EDIT_PLOT_COMMAND, ANF_LEFT | ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_BUTTON_UPDATE_SENDFORMAT, ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_EDIT_SENDCOMMAND, ANF_LEFT | ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_STATIC_SENDDATA, ANF_LEFT | ANF_RIGHT | ANF_TOP)
-//	ANCHOR_MAP_ENTRY(IDC_STATIC_3DGROUP, ANF_LEFT | ANF_RIGHT | ANF_TOP)	
-// 	ANCHOR_MAP_ENTRY(IDC_EDIT_ROLL, ANF_LEFT | ANF_RIGHT | ANF_TOP)
-// 	ANCHOR_MAP_ENTRY(IDC_EDIT_PITCH, ANF_LEFT | ANF_RIGHT | ANF_TOP)
-// 	ANCHOR_MAP_ENTRY(IDC_EDIT_YAW, ANF_LEFT | ANF_RIGHT | ANF_TOP)
-// 	ANCHOR_MAP_ENTRY(IDC_EDIT_ROLL2, ANF_LEFT | ANF_RIGHT | ANF_TOP)
-// 	ANCHOR_MAP_ENTRY(IDC_EDIT_PITCH2, ANF_LEFT | ANF_RIGHT | ANF_TOP)
-// 	ANCHOR_MAP_ENTRY(IDC_EDIT_YAW2, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_STATIC_3DGROUP, ANF_LEFT | ANF_RIGHT | ANF_TOP)	
+	ANCHOR_MAP_ENTRY(IDC_EDIT_ROLL, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_EDIT_PITCH, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_EDIT_YAW, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_EDIT_HEAVE, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_STATIC_3DGROUP2, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_EDIT_ROLL2, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_EDIT_PITCH2, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_EDIT_YAW2, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_EDIT_HEAVE2, ANF_LEFT | ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_BUTTON_3DUPDATE, ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_CHECK_SEND_BINARY, ANF_RIGHT | ANF_TOP)
 END_ANCHOR_MAP()
 
 BEGIN_MESSAGE_MAP(COutputView, CDockablePaneChildView)
@@ -74,10 +84,14 @@ BEGIN_MESSAGE_MAP(COutputView, CDockablePaneChildView)
 	ON_BN_CLICKED(IDC_BUTTON_CONNECT, &COutputView::OnBnClickedButtonConnect)
 	ON_BN_CLICKED(IDC_BUTTON_3DUPDATE, &COutputView::OnBnClickedButton3dupdate)
 	ON_WM_SIZE()
-	ON_BN_CLICKED(IDC_BUTTON_PLOT_UPDATE, &COutputView::OnBnClickedButtonPlotUpdate)
 	ON_BN_CLICKED(IDC_BUTTON_UPDATE_SENDFORMAT, &COutputView::OnBnClickedButtonUpdateSendformat)
 	ON_BN_CLICKED(IDC_RADIO_NONE, &COutputView::OnBnClickedRadioNone)
 	ON_WM_DESTROY()
+	ON_BN_CLICKED(IDC_RADIO_YAW_ROLL_PITCH1, &COutputView::OnBnClickedRadioYawRollPitch1)
+	ON_BN_CLICKED(IDC_RADIO_ROLL_YAW_PITCH1, &COutputView::OnBnClickedRadioRollYawPitch1)
+	ON_BN_CLICKED(IDC_RADIO_YAW_ROLL_PITCH2, &COutputView::OnBnClickedRadioYawRollPitch2)
+	ON_BN_CLICKED(IDC_RADIO_ROLL_YAW_PITCH2, &COutputView::OnBnClickedRadioRollYawPitch2)
+	ON_BN_CLICKED(IDC_CHECK_SEND_BINARY, &COutputView::OnBnClickedCheckSendBinary)
 END_MESSAGE_MAP()
 
 
@@ -104,16 +118,6 @@ BOOL COutputView::OnInitDialog()
 	UpdateConfig();
 
 	// Plot창 생성.
-	CRect rect;
-	GetClientRect(rect);
-
-	m_multiPlotWindows = new CMultiPlotWindow();
-	BOOL result = m_multiPlotWindows->Create(NULL, NULL, WS_VISIBLE | WS_CHILD,
-		CRect(0, 0, 100, 100), this, AFX_IDW_PANE_FIRST);
-
-	m_multiPlotWindows->SetScrollSizes(MM_TEXT, CSize(10, 10));
-	m_multiPlotWindows->ShowWindow(SW_SHOW);
-
 
 	// default type is none
 	m_UDPIP.EnableWindow(FALSE);
@@ -164,45 +168,23 @@ void COutputView::UpdateConfig()
 	m_RollCommand = g_option.m_rollCmd.empty() ? L"$8 - 1.55" : str2wstr(g_option.m_rollCmd).c_str();
 	m_PitchCommand = g_option.m_pitchCmd.empty() ? L"$7" : str2wstr(g_option.m_pitchCmd).c_str();
 	m_YawCommand = g_option.m_yawCmd.empty() ? L"$6" : str2wstr(g_option.m_yawCmd).c_str();
+	m_HeaveCommand = g_option.m_heaveCmd.empty() ? L"$5" : str2wstr(g_option.m_heaveCmd).c_str();
 
 	m_Roll2Command = str2wstr(g_option.m_roll2Cmd).c_str();
 	m_Pitch2Command = str2wstr(g_option.m_pitch2Cmd).c_str();
 	m_Yaw2Command = str2wstr(g_option.m_yaw2Cmd).c_str();
+	m_Heave2Command = str2wstr(g_option.m_heave2Cmd).c_str();
 
 	m_rollParser.ParseStr(wstr2str((LPCTSTR)m_RollCommand));
 	m_pitchParser.ParseStr(wstr2str((LPCTSTR)m_PitchCommand));
 	m_yawParser.ParseStr(wstr2str((LPCTSTR)m_YawCommand));
+	m_heaveParser.ParseStr(wstr2str((LPCTSTR)m_HeaveCommand));
 	m_roll2Parser.ParseStr(wstr2str((LPCTSTR)m_Roll2Command));
 	m_pitch2Parser.ParseStr(wstr2str((LPCTSTR)m_Pitch2Command));
 	m_yaw2Parser.ParseStr(wstr2str((LPCTSTR)m_Yaw2Command));
+	m_heave2Parser.ParseStr(wstr2str((LPCTSTR)m_Heave2Command));
 
 	m_sendFormatParser.ParseStr(wstr2str((LPCTSTR)m_SendFormat));
-
-	CString command =
-		L"plot1 = 0, 0, 0, 0, 0\r\n"
-		L"string1 = %f;\r\n"
-		L"name1 = Yaw\r\n"
-		L"plot2 = 0, 0, 0, 0, 0\r\n"
-		L"string2 = %*f; %f;\r\n"
-		L"name2 = Pitch\r\n"
-		L"plot3 = 0, 0, 0, 0, 0\r\n"
-		L"string3 = %*f; %*f; %f; \r\n"
-		L"name3 = Roll\r\n"
-		L"plot4 = 0, 0, 0, 0, 0\r\n"
-		L"string4 = %*f; %*f; %*f; %f;\r\n"
-		L"name4 = Heave\r\n";
-
-	CString plotCmd;
-	if (g_option.m_plotCmd.empty())
-	{
-		plotCmd = command;
-	}
-	else
-	{
-		plotCmd = str2wstr(g_option.m_plotCmd).c_str();
-	}
-
-	m_PlotCommand.SetWindowTextW(plotCmd);
 
 	UpdateData(FALSE);
 }
@@ -225,14 +207,6 @@ void COutputView::OnSize(UINT nType, int cx, int cy)
 	CRect rcWnd;
 	GetWindowRect(&rcWnd);
 	HandleAnchors(&rcWnd);
-
-	if (m_multiPlotWindows && m_multiPlotWindows->GetSafeHwnd())
-	{
-		CRect pwr;
-		GetDlgItem(IDC_STATIC_PLOT)->GetWindowRect(pwr);
-		ScreenToClient(pwr);
-		m_multiPlotWindows->MoveWindow(pwr);
-	}
 }
 
 
@@ -249,11 +223,11 @@ void COutputView::Update(const float deltaSeconds)
 		m_SendString.SetWindowTextW(str2wstr(sendStr).c_str());
 
 		{
-			// 3D View
+			// 3D View1
 			const float roll = m_interpreter.Excute(m_rollParser.m_stmt);
 			const float pitch = m_interpreter.Excute(m_pitchParser.m_stmt);
 			const float yaw = m_interpreter.Excute(m_yawParser.m_stmt);
-			//cController::Get()->GetCubeFlight().SetEulerAngle(roll, yaw, pitch);
+			const float heave = m_interpreter.Excute(m_heaveParser.m_stmt);
 
 			// radian normalize
 			// -pi ~ +pi 내의 각도로 정규화한 각도값(radian) chRoll, chPitch,chYaw 값으로 정보를 업데이트한다.
@@ -264,23 +238,28 @@ void COutputView::Update(const float deltaSeconds)
 			Quaternion roty;
 			roty.Euler2(Vector3(0, yaw, 0));
 
-			Quaternion rot = roty * rotr * rotp;
+			Quaternion rot;
+			if (m_radio3DCalcOrder1 == 0) 
+				rot = roty * rotr * rotp; // Yaw x Roll x Pitch
+			else
+				rot = rotr * roty * rotp; // Roll x Yaw x Pitch
+
 			Vector3 euler = rot.Euler();
 			const float chRoll = euler.x;
 			const float chYaw = euler.y;
 			const float chPitch = euler.z;
 
-			g_3dView->GetCar().SetEulerAngle(chRoll, chPitch, chYaw, 0);
+			g_3dView->GetCar().SetEulerAngle(chRoll, chPitch, chYaw, heave);
 			//
 		}
 
 
 		{
-			// 3D View
+			// 3D View2
 			const float roll = m_interpreter.Excute(m_roll2Parser.m_stmt);
 			const float pitch = m_interpreter.Excute(m_pitch2Parser.m_stmt);
 			const float yaw = m_interpreter.Excute(m_yaw2Parser.m_stmt);
-			//cController::Get()->GetCubeFlight().SetEulerAngle(roll, yaw, pitch);
+			const float heave = m_interpreter.Excute(m_heave2Parser.m_stmt);
 
 			// radian normalize
 			// -pi ~ +pi 내의 각도로 정규화한 각도값(radian) chRoll, chPitch,chYaw 값으로 정보를 업데이트한다.
@@ -291,18 +270,20 @@ void COutputView::Update(const float deltaSeconds)
 			Quaternion roty;
 			roty.Euler2(Vector3(0, yaw, 0));
 
-			Quaternion rot = roty * rotr * rotp;
+			Quaternion rot;
+			if (m_radio3DCalcOrder2 == 0)
+				rot = roty * rotr * rotp; // Yaw x Roll x Pitch
+			else
+				rot = rotr * roty * rotp; // Roll x Yaw x Pitch
+
 			Vector3 euler = rot.Euler();
 			const float chRoll = euler.x;
 			const float chYaw = euler.y;
 			const float chPitch = euler.z;
 
-			g_3dView2->GetCar().SetEulerAngle(chRoll, chPitch, chYaw, 0);
+			g_3dView2->GetCar().SetEulerAngle(chRoll, chPitch, chYaw, heave);
 			//
 		}
-
-		m_multiPlotWindows->SetString(sendStr.c_str());
-		m_multiPlotWindows->DrawGraph(m_incTime);
 
 		m_incTime = 0;
 	}
@@ -312,15 +293,22 @@ void COutputView::Update(const float deltaSeconds)
 	{
 		m_incSerialTime += deltaSeconds;
 
-		const bool isSerialConnect = cController::Get()->GetSerialComm().IsOpen();
-		if (isSerialConnect)
+		// 시리얼 포트로 모션 시뮬레이터 장비에 모션 정보를 전송한다.
+		if (cController::Get()->GetSerialComm().IsOpen())
 		{
 			if (m_incSerialTime > elapseT)
 			{
-				const string sendStr = m_sendFormatParser.Execute();
-
-				// 시리얼 포트로 모션 시뮬레이터 장비에 모션 정보를 전송한다.
-				cController::Get()->GetSerialComm().SendData((BYTE*)sendStr.c_str(), sendStr.size());
+				if (m_checkSendBinary)
+				{
+					BYTE buffer[512];
+					const int sendLen = m_sendFormatParser.ExecuteBinary(buffer, sizeof(buffer));
+					cController::Get()->GetSerialComm().SendData(buffer, sendLen);
+				}
+				else
+				{
+					const string sendStr = m_sendFormatParser.Execute();
+					cController::Get()->GetSerialComm().SendData((BYTE*)sendStr.c_str(), sendStr.size());
+				}
 
 				m_incSerialTime = 0;
 			}
@@ -332,8 +320,17 @@ void COutputView::Update(const float deltaSeconds)
 
 		if (m_incUDPTime > elapseT)
 		{
-			const string sendStr = m_sendFormatParser.Execute();
-			m_udpSendClient.SendData((BYTE*)sendStr.c_str(), sendStr.size());
+			if (m_checkSendBinary)
+			{
+				BYTE buffer[512];
+				const int sendLen = m_sendFormatParser.ExecuteBinary(buffer, sizeof(buffer));
+				m_udpSendClient.SendData(buffer, sendLen);
+			}
+			else
+			{
+				const string sendStr = m_sendFormatParser.Execute();
+				m_udpSendClient.SendData((BYTE*)sendStr.c_str(), sendStr.size());
+			}
 
 			m_incUDPTime = 0;
 		}
@@ -437,21 +434,10 @@ void COutputView::OnBnClickedButtonConnect()
 			m_ConnectButton.SetWindowTextW(L"Start");
 	}
 
-
 	if (m_isStart)
-	{
-		CString command;
-		m_PlotCommand.GetWindowTextW(command);
-		m_multiPlotWindows->ProcessPlotCommand(command);
-		m_multiPlotWindows->SetFixedWidthMode(true);
-
 		SetBackgroundColor(g_blueColor);
-	}
 	else
-	{
 		SetBackgroundColor(g_grayColor);
-	}
-
 }
 
 
@@ -459,14 +445,17 @@ void COutputView::OnBnClickedButton3dupdate()
 {
 	UpdateData();
 
+	m_isStart = true;
+
 	m_rollParser.ParseStr(wstr2str((LPCTSTR)m_RollCommand));
 	m_pitchParser.ParseStr(wstr2str((LPCTSTR)m_PitchCommand));
 	m_yawParser.ParseStr(wstr2str((LPCTSTR)m_YawCommand));
+	m_heaveParser.ParseStr(wstr2str((LPCTSTR)m_HeaveCommand));
 
 	m_roll2Parser.ParseStr(wstr2str((LPCTSTR)m_Roll2Command));
 	m_pitch2Parser.ParseStr(wstr2str((LPCTSTR)m_Pitch2Command));
 	m_yaw2Parser.ParseStr(wstr2str((LPCTSTR)m_Yaw2Command));
-
+	m_heave2Parser.ParseStr(wstr2str((LPCTSTR)m_Heave2Command));
 }
 
 
@@ -482,20 +471,6 @@ string COutputView::GetSendIP()
 		<< (address & 0x000000ff);
 	const string ip = ss.str();
 	return ip;
-}
-
-
-// 그래프  명령어 업데이트
-void COutputView::OnBnClickedButtonPlotUpdate()
-{
-	CString command;
-	m_PlotCommand.GetWindowTextW(command);
-	m_multiPlotWindows->ProcessPlotCommand(command);
-	m_multiPlotWindows->SetFixedWidthMode(true);
-
-	m_isStart = true;
-
-	SetBackgroundColor(g_blueColor);
 }
 
 
@@ -532,11 +507,31 @@ void COutputView::SaveConfig()
 	g_option.m_rollCmd = wstr2str((LPCTSTR)m_RollCommand);
 	g_option.m_pitchCmd = wstr2str((LPCTSTR)m_PitchCommand);
 	g_option.m_yawCmd = wstr2str((LPCTSTR)m_YawCommand);
+	g_option.m_heaveCmd = wstr2str((LPCTSTR)m_HeaveCommand);
 	g_option.m_roll2Cmd = wstr2str((LPCTSTR)m_Roll2Command);
 	g_option.m_pitch2Cmd = wstr2str((LPCTSTR)m_Pitch2Command);
 	g_option.m_yaw2Cmd = wstr2str((LPCTSTR)m_Yaw2Command);
+	g_option.m_heave2Cmd = wstr2str((LPCTSTR)m_Heave2Command);
+}
 
-	CString plotCmd;
-	m_PlotCommand.GetWindowTextW(plotCmd);
-	g_option.m_plotCmd = wstr2str((LPCTSTR)plotCmd);
+
+void COutputView::OnBnClickedRadioYawRollPitch1()
+{
+	UpdateData();
+}
+void COutputView::OnBnClickedRadioRollYawPitch1()
+{
+	UpdateData();
+}
+void COutputView::OnBnClickedRadioYawRollPitch2()
+{
+	UpdateData();
+}
+void COutputView::OnBnClickedRadioRollYawPitch2()
+{
+	UpdateData();
+}
+void COutputView::OnBnClickedCheckSendBinary()
+{
+	UpdateData();
 }

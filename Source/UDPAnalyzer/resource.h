@@ -114,6 +114,7 @@
 #define IDC_BUTTON_3DUPDATE             1022
 #define IDC_EDIT_SENDCOMMAND            1023
 #define IDC_EDIT_PLOT_COMMAND           1024
+#define IDC_EDIT_HEAVE                  1024
 #define IDC_BUTTON_PLOT_UPDATE          1025
 #define IDC_BUTTON_UPDATE_SENDFORMAT    1026
 #define IDC_STATIC_3DGROUP              1027
@@ -127,6 +128,7 @@
 #define IDC_CHECK_SYMBOL                1031
 #define IDC_STATIC_3DGROUP2             1031
 #define IDC_BUTTON_NEWPLOTWINDOW        1032
+#define IDC_EDIT_HEAVE2                 1032
 #define IDC_TREE_FILE                   1033
 #define IDC_BUTTON_FILE_REFRESH         1034
 #define IDC_BUTTON_PLAY                 1035
@@ -178,6 +180,11 @@
 #define IDC_STATIC_GROUP2               1080
 #define IDC_CHECK_SYMTABLE              1081
 #define IDC_EDIT_READ_MEMSIZE           1082
+#define IDC_RADIO_YAW_ROLL_PITCH1       1084
+#define IDC_RADIO_ROLL_YAW_PITCH1       1085
+#define IDC_RADIO_YAW_ROLL_PITCH2       1086
+#define IDC_RADIO_ROLL_YAW_PITCH2       1087
+#define IDC_CHECK_SEND_BINARY           1088
 #define ID_FILE_SAVEAS                  32771
 #define ID_VIEW_INITDOCKINGWINDOWS      32772
 
@@ -187,7 +194,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        325
 #define _APS_NEXT_COMMAND_VALUE         32773
-#define _APS_NEXT_CONTROL_VALUE         1083
+#define _APS_NEXT_CONTROL_VALUE         1089
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

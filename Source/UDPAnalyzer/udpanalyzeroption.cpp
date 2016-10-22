@@ -43,9 +43,11 @@ bool cUDPAnalyzerOption::Read(const string &fileName, const bool showMsgBox ) //
 		m_rollCmd = props.get<string>("ROLLCMD", "$1");
 		m_pitchCmd = props.get<string>("PITCHCMD", "$2");
 		m_yawCmd = props.get<string>("YAWCMD", "$3");
+		m_heaveCmd = props.get<string>("HEAVECMD", "$4");
 		m_roll2Cmd = props.get<string>("ROLL2CMD", "$1");
 		m_pitch2Cmd = props.get<string>("PITCH2CMD", "$2");
 		m_yaw2Cmd = props.get<string>("YAW2CMD", "$3");
+		m_heave2Cmd = props.get<string>("HEAVE2CMD", "$4");
 
 		m_plotCmd = props.get<string>("PLOTCMD", "");
 
@@ -100,10 +102,12 @@ bool cUDPAnalyzerOption::Write(const string &fileName)
 		props.add<string>("ROLLCMD", m_rollCmd);
 		props.add<string>("PITCHCMD", m_pitchCmd);
 		props.add<string>("YAWCMD", m_yawCmd);
+		props.add<string>("HEAVECMD", m_heaveCmd);
 
 		props.add<string>("ROLL2CMD", m_roll2Cmd);
 		props.add<string>("PITCH2CMD", m_pitch2Cmd);
 		props.add<string>("YAW2CMD", m_yaw2Cmd);
+		props.add<string>("HEAVE2CMD", m_heave2Cmd);
 		
 		props.add<string>("PLOTCMD", m_plotCmd);
 
