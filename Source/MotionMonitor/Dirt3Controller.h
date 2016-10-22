@@ -33,7 +33,6 @@ public:
 
 protected:
 	void PlayCountUp();
-	void ErrorCountUp();
 	void WritePlayCount(const boost::gregorian::date &playDate, const int playCount, const int errorCount);
 	bool GetTempCountData(OUT boost::gregorian::date &playDate, OUT int &playCount, OUT int &errorCount);
 	void ClearTempCountData();
@@ -44,8 +43,6 @@ protected:
 	cVitconMotionSim2 m_vitconMotionSim;
 	cVitconMotionSim2::STATE m_oldState;
 	cvproc::imagematch::cMatchScript2 m_matchScript;
-
-	
 
 	float m_lastUDPUpdateTime; // 가장 최근에 UDP 패킷을 받은 시간을 저장한다.
 	bool m_isLapTimeProgress; // @laptime 이 증가되기 시작하면, true 가 된다.
