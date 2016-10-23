@@ -92,6 +92,8 @@
 #define IDD_DIALOG_UDP_PLAYER           315
 #define IDD_DIALOG_SENDUDP              316
 #define IDD_DIALOG_SHM                  322
+#define IDD_DIALOG_SYMBOL               325
+#define IDD_DIALOG_SIMPLE               327
 #define IDC_EDIT_PORT                   1000
 #define IDC_BUTTON_START                1001
 #define IDC_EDIT_PROTOCOL               1002
@@ -185,6 +187,8 @@
 #define IDC_RADIO_YAW_ROLL_PITCH2       1086
 #define IDC_RADIO_ROLL_YAW_PITCH2       1087
 #define IDC_CHECK_SEND_BINARY           1088
+#define IDC_STATIC_PICTURE              1089
+#define IDC_BUTTON_DOCKING              1090
 #define ID_FILE_SAVEAS                  32771
 #define ID_VIEW_INITDOCKINGWINDOWS      32772
 
@@ -192,9 +196,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        325
+#define _APS_NEXT_RESOURCE_VALUE        329
 #define _APS_NEXT_COMMAND_VALUE         32773
-#define _APS_NEXT_CONTROL_VALUE         1089
+#define _APS_NEXT_CONTROL_VALUE         1091
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

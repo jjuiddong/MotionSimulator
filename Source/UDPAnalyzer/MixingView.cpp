@@ -5,6 +5,8 @@
 #include "UDPAnalyzer.h"
 #include "MixingView.h"
 #include "afxdialogex.h"
+#include "SimpleDlg.h"
+#include "SymbolView.h"
 
 
 // CMixingView dialog
@@ -16,11 +18,13 @@ CMixingView::CMixingView(CWnd* pParent /*=NULL*/)
 	, m_symbolCount(0)
 	, m_checkUpdateTime(0)
 	, m_updateFPS(0)
+	, m_dlgSymbolList(NULL)
 {
 }
 
 CMixingView::~CMixingView()
 {
+	SAFE_DELETE(m_dlgSymbolList);
 }
 
 void CMixingView::DoDataExchange(CDataExchange* pDX)
@@ -34,6 +38,7 @@ void CMixingView::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_ANCHOR_MAP(CMixingView)
 	ANCHOR_MAP_ENTRY(IDC_EDIT_COMMAND, ANF_LEFT | ANF_RIGHT | ANF_TOP)
+	ANCHOR_MAP_ENTRY(IDC_BUTTON_DOCKING, ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_LIST_SYMBOL, ANF_LEFT | ANF_RIGHT | ANF_TOP | ANF_BOTTOM)
 END_ANCHOR_MAP()
 
@@ -44,6 +49,7 @@ BEGIN_MESSAGE_MAP(CMixingView, CDockablePaneChildView)
 	ON_WM_SIZE()
 	ON_WM_DESTROY()
 	ON_BN_CLICKED(IDC_CHECK_SYMBOL, &CMixingView::OnBnClickedCheckSymbol)
+	ON_BN_CLICKED(IDC_BUTTON_DOCKING, &CMixingView::OnBnClickedButtonDocking)
 END_MESSAGE_MAP()
 
 
@@ -127,12 +133,14 @@ void CMixingView::Update(const float deltaSeconds)
 {
 	m_incTime += deltaSeconds;
 
+	if (m_dlgSymbolList)
+		m_dlgSymbolList->m_symbolWindow->Update(deltaSeconds);
+
 	if (m_incTime > 0.033f)
 	{
 		m_interpreter.Excute(m_parser.m_stmt);
 
-		// 심볼 정보 리스트를 업데이트 한다.
-		if (m_IsUpdateSymbolList)
+		if (m_IsUpdateSymbolList && IsWindowVisible())
 		{
 			if (script::g_symbols.size() != m_symbolCount)
 			{
@@ -237,3 +245,15 @@ void CMixingView::UpdateSymbolList(const float deltaSeconds)
 		m_SymbolList.SetItemText(item, 1, str);
 	}
 }
+
+
+void CMixingView::OnBnClickedButtonDocking()
+{
+	if (!m_dlgSymbolList)
+	{
+		m_dlgSymbolList = new CSimpleDlg(this, 0, L"SymbolList Window");
+		m_dlgSymbolList->Create(CSimpleDlg::IDD, this);
+	}
+	m_dlgSymbolList->ShowWindow(SW_SHOW);
+}
+

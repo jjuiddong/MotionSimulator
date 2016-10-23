@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
@@ -15,6 +11,13 @@
     </Filter>
     <Filter Include="UIComponent">
       <UniqueIdentifier>{7dc7ff9e-86fd-4dec-93c5-9099b39a38b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{6426f369-901c-4f26-8c5c-22a3ab16ddae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,34 +49,13 @@
     <ClInclude Include="ViewTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UDPView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlotView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MixingView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OutputView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DXView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="udpanalyzeroption.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UDPPlayerView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="udpstream.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="udpstreamplayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UDPSendView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Common\UIComponent\AutoHandle.h">
@@ -148,7 +130,34 @@
     <ClInclude Include="..\..\..\Common\UIComponent\UpdateObserver.h">
       <Filter>UIComponent</Filter>
     </ClInclude>
+    <ClInclude Include="UDPPlayerView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPSendView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="UDPView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="SymbolView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="PlotView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="MixingView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="DXView.h">
+      <Filter>View</Filter>
+    </ClInclude>
     <ClInclude Include="ShmView.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -168,37 +177,13 @@
     <ClCompile Include="UDPAnalyzerView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ViewTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UDPView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlotView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MixingView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OutputView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DXView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="udpanalyzeroption.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UDPPlayerView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="udpstream.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="udpstreamplayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UDPSendView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Common\UIComponent\C3DView.cpp">
@@ -249,7 +234,37 @@
     <ClCompile Include="..\..\..\Common\UIComponent\UIUtiltity.cpp">
       <Filter>UIComponent</Filter>
     </ClCompile>
+    <ClCompile Include="DXView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="MixingView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="PlotView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
     <ClCompile Include="ShmView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewTree.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPSendView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPPlayerView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolView.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,6 +5,8 @@
 #include "UDPAnalyzer.h"
 #include "ShmView.h"
 #include "afxdialogex.h"
+#include "symbolview.h"
+#include "SimpleDlg.h"
 
 
 // CShmView dialog
@@ -22,14 +24,19 @@ CShmView::CShmView(CWnd* pParent /*=NULL*/)
 	, m_state(STOP)
 	, m_playSharedMemName(_T(""))
 	, m_incRecordLength(0)
-	, m_dumpWindow(0)
+	, m_dumpWindow(NULL)
+	, m_symbolWindow(NULL)
 	, m_IsShmSymbolTable(FALSE)
 	, m_readMemorySize(128)
+	, m_dlgDumpMemory(NULL)
+	, m_dlgSymbolList(NULL)
 {
 }
 
 CShmView::~CShmView()
 {
+	SAFE_DELETE(m_dlgDumpMemory);
+	SAFE_DELETE(m_dlgSymbolList);
 }
 
 void CShmView::DoDataExchange(CDataExchange* pDX)
@@ -53,12 +60,14 @@ void CShmView::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_ANCHOR_MAP(CShmView)
+	ANCHOR_MAP_ENTRY(IDC_BUTTON_OPEN, ANF_RIGHT | ANF_TOP )
 	ANCHOR_MAP_ENTRY(IDC_TREE_FILE, ANF_LEFT | ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_STATIC_FPS, ANF_RIGHT | ANF_TOP)
  	ANCHOR_MAP_ENTRY(IDC_BUTTON_REFRESH, ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_STATIC_GROUP1, ANF_LEFT | ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_STATIC_GROUP2, ANF_LEFT | ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_SLIDER1, ANF_LEFT | ANF_RIGHT | ANF_TOP )
+	ANCHOR_MAP_ENTRY(IDC_BUTTON_DOCKING, ANF_RIGHT | ANF_TOP)
 	ANCHOR_MAP_ENTRY(IDC_STATIC_DUMP, ANF_LEFT | ANF_RIGHT | ANF_TOP | ANF_BOTTOM)
 END_ANCHOR_MAP()
 
@@ -75,6 +84,7 @@ BEGIN_MESSAGE_MAP(CShmView, CDockablePaneChildView)
 	ON_WM_SIZE()
 	ON_BN_CLICKED(IDC_CHECK_SYMTABLE, &CShmView::OnBnClickedCheckSymtable)
 	ON_BN_CLICKED(IDC_BUTTON_OPEN_PROTOCOL, &CShmView::OnBnClickedButtonOpenProtocol)
+	ON_BN_CLICKED(IDC_BUTTON_DOCKING, &CShmView::OnBnClickedButtonDocking)
 END_MESSAGE_MAP()
 
 
@@ -107,6 +117,10 @@ BOOL CShmView::OnInitDialog()
 	m_dumpWindow->SetScrollSizes(MM_TEXT, CSize(rect.Width() - 30, 100));
 	m_dumpWindow->ShowWindow(SW_SHOW);
 
+	m_symbolWindow = new CSymbolView();
+	m_symbolWindow->Create(CSymbolView::IDD, this);
+	m_symbolWindow->ShowWindow(SW_HIDE);
+
 	return TRUE;
 }
 
@@ -125,9 +139,9 @@ void CShmView::OnSize(UINT nType, int cx, int cy)
 		GetDlgItem(IDC_STATIC_DUMP)->GetWindowRect(pwr);
 		ScreenToClient(pwr);
 		m_dumpWindow->MoveWindow(pwr);
+		m_symbolWindow->MoveWindow(pwr);
 	}
 }
-
 
 
 void CShmView::OnBnClickedButtonOpen()
@@ -170,6 +184,9 @@ void CShmView::OnBnClickedButtonOpen()
 				::AfxMessageBox(L"Error!! Open Shared Memory Name \n");
 				return;
 			}
+
+			m_symbolWindow->ShowWindow(SW_SHOW);
+			m_dumpWindow->ShowWindow(SW_HIDE);
 		}
 		else
 		{
@@ -178,6 +195,9 @@ void CShmView::OnBnClickedButtonOpen()
 				::AfxMessageBox(L"Error!! Open Shared Memory Failed");
 				return;
 			}
+
+			m_symbolWindow->ShowWindow(SW_HIDE);
+			m_dumpWindow->ShowWindow(SW_SHOW);
 		}
 
 		m_isStart = true;
@@ -213,6 +233,7 @@ void CShmView::Update(const float deltaSeconds)
 	m_incTime += deltaSeconds;
 	if (m_incTime < 0.033f)
 		return;
+	const float deltaTime = m_incTime;
 	CheckFPS(m_incTime);
 	m_incTime = 0;
 
@@ -254,9 +275,23 @@ void CShmView::Update(const float deltaSeconds)
 				pmem += field.bytes;
 				++i;
 			}
+		}
 
-			if (m_dumpWindow)
+		// update dump, symbol windows
+		if (m_symbolWindow && m_dumpWindow)
+		{
+			if (m_IsShmSymbolTable)
+			{
+				m_symbolWindow->Update(deltaTime);
+				if (m_dlgSymbolList)
+					m_dlgSymbolList->m_symbolWindow->Update(deltaTime);
+			}
+			else
+			{
 				m_dumpWindow->UpdateDump((char*)m_readShmMem.m_memPtr, m_readMemorySize);
+				if (m_dlgDumpMemory)
+					m_dlgDumpMemory->m_dumpWindow->UpdateDump((char*)m_readShmMem.m_memPtr, m_readMemorySize);
+			}
 		}
 	}
 
@@ -268,10 +303,7 @@ void CShmView::Update(const float deltaSeconds)
 			 const int bufferLen = m_udpStream.Write((char*)m_readShmMem.m_memPtr, m_readShmMem.m_memoryByteSyze);
 			 m_incRecordLength += bufferLen;
 
-// 			if (m_dumpWindow)
-// 				m_dumpWindow->UpdateDump((char*)m_readShmMem.m_memPtr, bufferLen);
-
-			CString lenStr;
+			 CString lenStr;
 			lenStr.Format(L"%d", m_incRecordLength);
 			m_recordLength.SetWindowTextW(lenStr);
 		}
@@ -292,6 +324,8 @@ void CShmView::Update(const float deltaSeconds)
 
 			if (m_dumpWindow)
 				m_dumpWindow->UpdateDump((char*)m_buffer, bufferLen);
+			if (m_dlgDumpMemory)
+				m_dlgDumpMemory->m_dumpWindow->UpdateDump((char*)m_buffer, bufferLen);
 
  			const int curPos = m_udpPlayer.GetCurrentPlayElementIndex();
  			m_sliderPlay.SetPos(curPos);
@@ -642,4 +676,27 @@ CShmView::STATE CShmView::ChangeState(const STATE nextState)
 	}
 
 	return m_state;
+}
+
+
+void CShmView::OnBnClickedButtonDocking()
+{
+	if (m_dumpWindow->IsWindowVisible())
+	{
+		if (!m_dlgDumpMemory)
+		{
+			m_dlgDumpMemory = new CSimpleDlg(this, 1, L"SharedMemory Dump Window");
+			m_dlgDumpMemory->Create(CSimpleDlg::IDD, this);
+		}
+		m_dlgDumpMemory->ShowWindow(SW_SHOW);
+	}
+	else
+	{
+		if (!m_dlgSymbolList)
+		{
+			m_dlgSymbolList = new CSimpleDlg(this, 0, L"SymbolList Window");
+			m_dlgSymbolList->Create(CSimpleDlg::IDD, this);
+		}
+		m_dlgSymbolList->ShowWindow(SW_SHOW);
+	}
 }

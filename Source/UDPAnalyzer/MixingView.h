@@ -4,6 +4,7 @@
 
 
 // CMixingView dialog
+class CSimpleDlg;
 class CMixingView : public CDockablePaneChildView
 {
 public:
@@ -29,6 +30,7 @@ protected:
 	map<string, int> m_symLookup;
 	map<string, script::sFieldData> m_cloneSymbols;
 	float m_incSymbolUpdateTime;
+	CSimpleDlg *m_dlgSymbolList;
 
 
 protected:
@@ -50,4 +52,5 @@ public:
 	afx_msg void OnBnClickedCheckSymbol();
 	BOOL m_IsUpdateSymbolList;
 	CStatic m_staticUpdateFPS;
+	afx_msg void OnBnClickedButtonDocking();
 };

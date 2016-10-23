@@ -5,6 +5,8 @@
 
 // CShmView dialog
 class cMemDumpWindow;
+class CSymbolView;
+class CSimpleDlg;
 
 class CShmView : public CDockablePaneChildView
 {
@@ -44,6 +46,9 @@ public:
 	cUDPStreamPlayer m_udpPlayer;
 	char m_buffer[512];
 	cMemDumpWindow *m_dumpWindow;
+	CSymbolView *m_symbolWindow;
+	CSimpleDlg *m_dlgDumpMemory;
+	CSimpleDlg *m_dlgSymbolList;
 
 
 	DECLARE_ANCHOR_MAP();
@@ -75,4 +80,5 @@ public:
 	afx_msg void OnBnClickedCheckSymtable();
 	int m_readMemorySize;
 	afx_msg void OnBnClickedButtonOpenProtocol();
+	afx_msg void OnBnClickedButtonDocking();
 };
