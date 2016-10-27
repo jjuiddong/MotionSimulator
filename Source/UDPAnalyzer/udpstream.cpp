@@ -182,7 +182,7 @@ int cUDPStream::Write(const char *buff, const int len)
 	m_ringBuffer[m_tail].len = m_bufferLen + (sizeof(sElement) - MAX_BUFLEN);
 	m_ringBuffer[m_tail].t = timeGetTime();
 
-	const int cpLen = MIN(MAX_BUFLEN, len);
+	const int cpLen = min(MAX_BUFLEN, len);
 	memcpy(m_ringBuffer[m_tail].data, buff, cpLen);
 
 	m_tail = nextTailIdx;

@@ -82,4 +82,6 @@ public:
 	afx_msg void OnBnClickedRadioRollYawPitch2();
 	BOOL m_checkSendBinary;
 	afx_msg void OnBnClickedCheckSendBinary();
+	afx_msg void OnBnClickedRadioQuaternion1();
+	afx_msg void OnBnClickedRadioQuaternion2();
 };

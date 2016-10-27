@@ -51,4 +51,7 @@ public:
 	afx_msg void OnBnClickedCheckSymbol();
 	BOOL m_IsDisplaySymbol;
 	CStatic m_ReceiveCount;
+	int m_radioMemStoreType;
+	afx_msg void OnBnClickedRadioLittleEndian();
+	afx_msg void OnBnClickedRadioBigEndian();
 };

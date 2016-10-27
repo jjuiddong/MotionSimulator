@@ -45,6 +45,7 @@ public:
 	cUDPStream m_udpStream;
 	cUDPStreamPlayer m_udpPlayer;
 	char m_buffer[512];
+	vector<BYTE> m_dumpBuffer;
 	cMemDumpWindow *m_dumpWindow;
 	CSymbolView *m_symbolWindow;
 	CSimpleDlg *m_dlgDumpMemory;
@@ -81,4 +82,7 @@ public:
 	int m_readMemorySize;
 	afx_msg void OnBnClickedButtonOpenProtocol();
 	afx_msg void OnBnClickedButtonDocking();
+	int m_radioMemStoreType;
+	afx_msg void OnBnClickedRadioLittleEndian();
+	afx_msg void OnBnClickedRadioBigEndian();
 };

@@ -92,6 +92,8 @@ BEGIN_MESSAGE_MAP(COutputView, CDockablePaneChildView)
 	ON_BN_CLICKED(IDC_RADIO_YAW_ROLL_PITCH2, &COutputView::OnBnClickedRadioYawRollPitch2)
 	ON_BN_CLICKED(IDC_RADIO_ROLL_YAW_PITCH2, &COutputView::OnBnClickedRadioRollYawPitch2)
 	ON_BN_CLICKED(IDC_CHECK_SEND_BINARY, &COutputView::OnBnClickedCheckSendBinary)
+	ON_BN_CLICKED(IDC_RADIO_QUATERNION1, &COutputView::OnBnClickedRadioQuaternion1)
+	ON_BN_CLICKED(IDC_RADIO_QUATERNION2, &COutputView::OnBnClickedRadioQuaternion2)
 END_MESSAGE_MAP()
 
 
@@ -239,17 +241,25 @@ void COutputView::Update(const float deltaSeconds)
 			roty.Euler2(Vector3(0, yaw, 0));
 
 			Quaternion rot;
-			if (m_radio3DCalcOrder1 == 0) 
-				rot = roty * rotr * rotp; // Yaw x Roll x Pitch
+			switch (m_radio3DCalcOrder1)
+			{
+			case 0: rot = roty * rotr * rotp; break; // Yaw x Roll x Pitch
+			case 1: rot = rotr * roty * rotp; break; // Roll x Yaw x Pitch
+			case 2: rot = Quaternion(roll, pitch, yaw, heave); break;
+			}
+
+			if (m_radio3DCalcOrder1 == 2) // quaternion
+			{
+				g_3dView->GetCar().m_tm = rot.GetMatrix();
+			}
 			else
-				rot = rotr * roty * rotp; // Roll x Yaw x Pitch
-
-			Vector3 euler = rot.Euler();
-			const float chRoll = euler.x;
-			const float chYaw = euler.y;
-			const float chPitch = euler.z;
-
-			g_3dView->GetCar().SetEulerAngle(chRoll, chPitch, chYaw, heave);
+			{
+				Vector3 euler = rot.Euler();
+				const float chRoll = euler.x;
+				const float chYaw = euler.y;
+				const float chPitch = euler.z;
+				g_3dView->GetCar().SetEulerAngle(chRoll, chPitch, chYaw, heave);
+			}
 			//
 		}
 
@@ -271,17 +281,25 @@ void COutputView::Update(const float deltaSeconds)
 			roty.Euler2(Vector3(0, yaw, 0));
 
 			Quaternion rot;
-			if (m_radio3DCalcOrder2 == 0)
-				rot = roty * rotr * rotp; // Yaw x Roll x Pitch
+			switch (m_radio3DCalcOrder2)
+			{
+			case 0: rot = roty * rotr * rotp; break; // Yaw x Roll x Pitch
+			case 1: rot = rotr * roty * rotp; break; // Roll x Yaw x Pitch
+			case 2: rot = Quaternion(roll, pitch, yaw, heave); break;
+			}
+
+			if (m_radio3DCalcOrder2 == 2) // quaternion
+			{
+				g_3dView2->GetCar().m_tm = rot.GetMatrix();
+			}
 			else
-				rot = rotr * roty * rotp; // Roll x Yaw x Pitch
-
-			Vector3 euler = rot.Euler();
-			const float chRoll = euler.x;
-			const float chYaw = euler.y;
-			const float chPitch = euler.z;
-
-			g_3dView2->GetCar().SetEulerAngle(chRoll, chPitch, chYaw, heave);
+			{
+				Vector3 euler = rot.Euler();
+				const float chRoll = euler.x;
+				const float chYaw = euler.y;
+				const float chPitch = euler.z;
+				g_3dView2->GetCar().SetEulerAngle(chRoll, chPitch, chYaw, heave);
+			}
 			//
 		}
 
@@ -532,6 +550,14 @@ void COutputView::OnBnClickedRadioRollYawPitch2()
 	UpdateData();
 }
 void COutputView::OnBnClickedCheckSendBinary()
+{
+	UpdateData();
+}
+void COutputView::OnBnClickedRadioQuaternion1()
+{
+	UpdateData();
+}
+void COutputView::OnBnClickedRadioQuaternion2()
 {
 	UpdateData();
 }

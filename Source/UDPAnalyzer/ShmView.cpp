@@ -30,6 +30,7 @@ CShmView::CShmView(CWnd* pParent /*=NULL*/)
 	, m_readMemorySize(128)
 	, m_dlgDumpMemory(NULL)
 	, m_dlgSymbolList(NULL)
+	, m_radioMemStoreType(0)
 {
 }
 
@@ -56,6 +57,7 @@ void CShmView::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_SLIDER1, m_sliderPlay);
 	DDX_Check(pDX, IDC_CHECK_SYMTABLE, m_IsShmSymbolTable);
 	DDX_Text(pDX, IDC_EDIT_READ_MEMSIZE, m_readMemorySize);
+	DDX_Radio(pDX, IDC_RADIO_LITTLE_ENDIAN, m_radioMemStoreType);
 }
 
 
@@ -85,6 +87,8 @@ BEGIN_MESSAGE_MAP(CShmView, CDockablePaneChildView)
 	ON_BN_CLICKED(IDC_CHECK_SYMTABLE, &CShmView::OnBnClickedCheckSymtable)
 	ON_BN_CLICKED(IDC_BUTTON_OPEN_PROTOCOL, &CShmView::OnBnClickedButtonOpenProtocol)
 	ON_BN_CLICKED(IDC_BUTTON_DOCKING, &CShmView::OnBnClickedButtonDocking)
+	ON_BN_CLICKED(IDC_RADIO_LITTLE_ENDIAN, &CShmView::OnBnClickedRadioLittleEndian)
+	ON_BN_CLICKED(IDC_RADIO_BIG_ENDIAN, &CShmView::OnBnClickedRadioBigEndian)
 END_MESSAGE_MAP()
 
 
@@ -253,16 +257,22 @@ void CShmView::Update(const float deltaSeconds)
 		{
 			int i = 0;
 			int index = 0;
-			const int bufferLen = m_readShmMem.m_memoryByteSyze;
-			const char *pmem = (const char*)m_readShmMem.m_memPtr;
+			if (m_dumpBuffer.size() != m_readShmMem.m_memoryByteSyze)
+				m_dumpBuffer.resize(m_readShmMem.m_memoryByteSyze);
+
+			memcpy(&m_dumpBuffer[0], m_readShmMem.m_memPtr, m_readShmMem.m_memoryByteSyze);
+			BYTE *pmem = &m_dumpBuffer[0];
 			for each (auto &field in m_protocolParser.m_fields)
 			{
-				if (index > bufferLen)
+				if (index > m_readShmMem.m_memoryByteSyze)
 					break;
+
+ 				if (m_radioMemStoreType == 1) // big endian
+ 					script::bigEndian(pmem, field.bytes);
 
 				script::sFieldData data;
 				ZeroMemory(data.buff, sizeof(data));
-				memcpy(data.buff, pmem, MIN(sizeof(data.buff), field.bytes));
+				memcpy(data.buff, pmem, min(sizeof(data.buff), field.bytes));
 				data.type = field.type;
 
 				const string id = format("$%d", i + 1); // $1 ,$2, $3 ~
@@ -288,9 +298,9 @@ void CShmView::Update(const float deltaSeconds)
 			}
 			else
 			{
-				m_dumpWindow->UpdateDump((char*)m_readShmMem.m_memPtr, m_readMemorySize);
+				m_dumpWindow->UpdateDump((char*)&m_dumpBuffer[0], m_dumpBuffer.size());
 				if (m_dlgDumpMemory)
-					m_dlgDumpMemory->m_dumpWindow->UpdateDump((char*)m_readShmMem.m_memPtr, m_readMemorySize);
+					m_dlgDumpMemory->m_dumpWindow->UpdateDump((char*)&m_dumpBuffer[0], m_dumpBuffer.size());
 			}
 		}
 	}
@@ -300,7 +310,7 @@ void CShmView::Update(const float deltaSeconds)
 	case RECORD:
 		if (m_readShmMem.IsOpen())
 		{
-			 const int bufferLen = m_udpStream.Write((char*)m_readShmMem.m_memPtr, m_readShmMem.m_memoryByteSyze);
+			 const int bufferLen = m_udpStream.Write((char*)&m_dumpBuffer[0], m_dumpBuffer.size());
 			 m_incRecordLength += bufferLen;
 
 			 CString lenStr;
@@ -372,9 +382,15 @@ void CShmView::OnBnClickedCheckRepeat()
 {
 	UpdateData();
 }
-
-
 void CShmView::OnBnClickedCheckSymtable()
+{
+	UpdateData();
+}
+void CShmView::OnBnClickedRadioLittleEndian()
+{
+	UpdateData();
+}
+void CShmView::OnBnClickedRadioBigEndian()
 {
 	UpdateData();
 }

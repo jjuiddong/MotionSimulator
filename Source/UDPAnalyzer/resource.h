@@ -188,7 +188,11 @@
 #define IDC_RADIO_ROLL_YAW_PITCH2       1087
 #define IDC_CHECK_SEND_BINARY           1088
 #define IDC_STATIC_PICTURE              1089
+#define IDC_RADIO_QUATERNION1           1089
 #define IDC_BUTTON_DOCKING              1090
+#define IDC_RADIO_QUATERNION2           1090
+#define IDC_RADIO_LITTLE_ENDIAN         1091
+#define IDC_RADIO_BIG_ENDIAN            1092
 #define ID_FILE_SAVEAS                  32771
 #define ID_VIEW_INITDOCKINGWINDOWS      32772
 
@@ -196,9 +200,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        329
+#define _APS_NEXT_RESOURCE_VALUE        330
 #define _APS_NEXT_COMMAND_VALUE         32773
-#define _APS_NEXT_CONTROL_VALUE         1091
+#define _APS_NEXT_CONTROL_VALUE         1092
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

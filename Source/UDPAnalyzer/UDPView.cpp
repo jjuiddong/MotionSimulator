@@ -17,6 +17,7 @@ CUDPView::CUDPView(CWnd* pParent /*=NULL*/)
 	, m_dumpWindow(NULL)
 	, m_IsDisplaySymbol(FALSE)
 	, m_recvCount(0)
+	, m_radioMemStoreType(0)
 {
 }
 
@@ -34,6 +35,7 @@ void CUDPView::DoDataExchange(CDataExchange* pDX)
 	DDX_Check(pDX, IDC_CHECK_ASCII, m_IsASCII);
 	DDX_Check(pDX, IDC_CHECK_SYMBOL, m_IsDisplaySymbol);
 	DDX_Control(pDX, IDC_STATIC_RCVCOUNT, m_ReceiveCount);
+	DDX_Radio(pDX, IDC_RADIO_LITTLE_ENDIAN, m_radioMemStoreType);
 }
 
 
@@ -53,6 +55,8 @@ BEGIN_MESSAGE_MAP(CUDPView, CDockablePaneChildView)
 	ON_BN_CLICKED(IDC_CHECK_DUMP, &CUDPView::OnBnClickedCheckDump)
 	ON_BN_CLICKED(IDC_CHECK_ASCII, &CUDPView::OnBnClickedCheckAscii)
 	ON_BN_CLICKED(IDC_CHECK_SYMBOL, &CUDPView::OnBnClickedCheckSymbol)
+	ON_BN_CLICKED(IDC_RADIO_LITTLE_ENDIAN, &CUDPView::OnBnClickedRadioLittleEndian)
+	ON_BN_CLICKED(IDC_RADIO_BIG_ENDIAN, &CUDPView::OnBnClickedRadioBigEndian)
 END_MESSAGE_MAP()
 
 
@@ -124,17 +128,37 @@ void CUDPView::UpdateUDP(const char *buffer, const int bufferLen)
 {
 	RET(m_protocolParser.m_fields.empty());
 
+	BYTE *pmem = NULL;
+
+	if (m_radioMemStoreType == 1) // big endian
+	{ // for big endian swap buffer
+		static vector<BYTE> tempBuffer;
+		if (tempBuffer.size() != bufferLen)
+			tempBuffer.resize(bufferLen);
+
+		memcpy(&tempBuffer[0], buffer, bufferLen);
+		pmem = &tempBuffer[0];
+	}
+	else
+	{
+		pmem = (BYTE*)buffer;
+	}
+
 	int i = 0;
 	int index = 0;
-	const char *pmem = buffer;
+	BYTE *dumpBuffer = pmem;
+
 	for each (auto &field in m_protocolParser.m_fields)
 	{
 		if (index > bufferLen)
 			break;
 
+		if (m_radioMemStoreType == 1) // big endian
+			script::bigEndian((BYTE*)pmem, field.bytes);
+
 		script::sFieldData data;
 		ZeroMemory(data.buff, sizeof(data));
-		memcpy(data.buff, pmem, MIN(sizeof(data.buff), field.bytes));
+		memcpy(data.buff, pmem, min(sizeof(data.buff), field.bytes));
 		data.type = field.type;
 
 		const string id = format("$%d", i + 1); // $1 ,$2, $3 ~
@@ -149,11 +173,10 @@ void CUDPView::UpdateUDP(const char *buffer, const int bufferLen)
 	}
 
 	if (m_IsDump && m_dumpWindow)
-		m_dumpWindow->UpdateDump(buffer, bufferLen);
+		m_dumpWindow->UpdateDump((const char*)dumpBuffer, bufferLen);
 
 	++m_recvCount;
 	m_ReceiveCount.SetWindowTextW(common::formatw("%d", m_recvCount).c_str());
-
 }
 
 
@@ -273,4 +296,14 @@ void CUDPView::OnBnClickedCheckSymbol()
 
 	m_dumpWindow->SetDisplaySymbol(m_IsDisplaySymbol? true : false, &m_protocolParser);
 	m_dumpWindow->InvalidateRect(NULL);
+}
+
+
+void CUDPView::OnBnClickedRadioLittleEndian()
+{
+	UpdateData();
+}
+void CUDPView::OnBnClickedRadioBigEndian()
+{
+	UpdateData();
 }
