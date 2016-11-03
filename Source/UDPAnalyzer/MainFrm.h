@@ -23,6 +23,7 @@ protected: // create from serialization only
 // Attributes
 public:
 	list<CDockablePaneBase*> m_viewList;
+	vector<CPlotView*> m_plots; // Plot View2~10 
 	CUDPView *m_udpView;
 	CPlotView *m_plotView;
 	CMixingView *m_mixingView;
@@ -46,6 +47,8 @@ public:
 	virtual BOOL LoadFrame(UINT nIDResource, DWORD dwDefaultStyle = WS_OVERLAPPEDWINDOW | FWS_ADDTOTITLE, CWnd* pParentWnd = NULL, CCreateContext* pContext = NULL);
 	void UpdateViewConfig();
 	void SaveViewConfig(const string fileName);
+	virtual BOOL OnCloseMiniFrame(CPaneFrameWnd* /*pWnd*/);
+
 
 
 // Implementation

@@ -14,6 +14,8 @@ cUDPAnalyzerOption g_option;
 cUDPAnalyzerOption::cUDPAnalyzerOption()
 	: m_initWindows(false)
 {
+	m_plotViewCmd.resize(10);
+	m_plotInputCmd.resize(10);
 
 }
 
@@ -52,8 +54,22 @@ bool cUDPAnalyzerOption::Read(const string &fileName, const bool showMsgBox ) //
 		m_plotCmd = props.get<string>("PLOTCMD", "");
 
 		m_mixingCmd = props.get<string>("MIXINGCMD", "");
-		m_plotViewCmd = props.get<string>("PLOTVIEWCMD", "");
-		m_plotInputCmd = props.get<string>("PLOTINPUTCMD", "");
+
+		m_plotViewCmd.resize(10);
+		m_plotInputCmd.resize(10);
+		for (int i=0; i < 10; ++i)
+		{
+			stringstream ss1;
+			ss1 << "PLOTVIEWCMD" << i + 1;
+			m_plotViewCmd[i] = props.get<string>(ss1.str(), "");
+
+			stringstream ss2;
+			ss2 << "PLOTINPUTCMD" << i + 1;
+			m_plotInputCmd[i] = props.get<string>(ss2.str(), "");
+		}
+
+		//m_plotViewCmd = props.get<string>("PLOTVIEWCMD", "");
+		//m_plotInputCmd = props.get<string>("PLOTINPUTCMD", "");
 		m_udpProtocolCmd = props.get<string>("UDPPROTOCOLCMD", "");
 		m_udpPort = props.get<int>("UDPPORT", 8888);
 
@@ -112,8 +128,20 @@ bool cUDPAnalyzerOption::Write(const string &fileName)
 		props.add<string>("PLOTCMD", m_plotCmd);
 
 		props.add<string>("MIXINGCMD", m_mixingCmd);
-		props.add<string>("PLOTVIEWCMD", m_plotViewCmd);
-		props.add<string>("PLOTINPUTCMD", m_plotInputCmd);
+
+		for (u_int i = 0; i < m_plotViewCmd.size(); ++i)
+		{
+			stringstream ss1;
+			ss1 << "PLOTVIEWCMD" << i + 1;
+			props.add<string>(ss1.str(), m_plotViewCmd[i]);
+
+			stringstream ss2;
+			ss2 << "PLOTINPUTCMD" << i + 1;
+			props.add<string>(ss2.str(), m_plotInputCmd[i]);
+		}
+// 		props.add<string>("PLOTVIEWCMD", m_plotViewCmd);
+// 		props.add<string>("PLOTINPUTCMD", m_plotInputCmd);
+		
 		props.add<string>("UDPPROTOCOLCMD", m_udpProtocolCmd);
 		props.add<int>("UDPPORT", m_udpPort);
 		props.add<string>("UDPPLAYERIP", m_udpPlayerIP);

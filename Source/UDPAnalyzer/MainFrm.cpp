@@ -22,13 +22,13 @@ C3DView *g_3dView2 = NULL;
 
 
 #define CREATE_DOCKVIEW2(Class, VAR, PANE_NAME, PANE_ID, RESOURCE_ID) \
-				{\
+	{\
 		CDockablePaneBase *pane  = new CDockablePaneBase();\
 		if (!pane->Create(PANE_NAME, this, CRect(0, 0, 200, 200), TRUE, PANE_ID, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))\
-												{\
+		{\
 			TRACE0("Failed to create View window\n");\
 			return FALSE;\
-												}\
+		}\
 		VAR = new Class(pane);\
 		BOOL reval = VAR->Create(RESOURCE_ID, pane);\
 		VAR->ShowWindow(SW_SHOW);\
@@ -37,7 +37,7 @@ C3DView *g_3dView2 = NULL;
 		\
 		HICON hClassViewIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(theApp.m_bHiColorIcons? IDI_CLASS_VIEW_HC : IDI_CLASS_VIEW), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);\
  		pane->SetIcon(hClassViewIcon, FALSE);\
-				}
+	}
 #define CREATE_DOCKVIEW(Class, VAR, PANE_NAME, PANE_ID) \
 	CREATE_DOCKVIEW2(Class, VAR, PANE_NAME, PANE_ID, Class::IDD);
 
@@ -317,6 +317,22 @@ void CMainFrame::UpdateViewConfig()
 	m_mixingView->UpdateConfig();
 	m_udpPlayerView->UpdateConfig();
 	m_udpSendView->UpdateConfig();
+
+	// open plot view
+	for (u_int i = 1; i < g_option.m_plotViewCmd.size(); ++i)
+	{
+		if (!g_option.m_plotInputCmd[i].empty())
+		{
+			if (m_plots.size() >= i)
+			{
+				m_plots[i - 1]->UpdateConfig(); // update from open config file data
+			}
+			else
+			{
+				NewPlotWindow();
+			}
+		}
+	}
 }
 
 
@@ -413,7 +429,9 @@ BOOL CMainFrame::NewPlotWindow()
 	CDockablePane *parentPane = (CDockablePane*)m_plotView->GetParent();
 	pane->AttachToTabWnd(parentPane, DM_SHOW, TRUE, &pTabbedBar);
 
-	plotView->SetAddPlotView(true);
+	plotView->m_plotId = plotViewIncId - 2;
+	plotView->UpdateConfig();
+	m_plots.push_back(plotView);
 
 	return TRUE;
 }
@@ -520,4 +538,22 @@ void CMainFrame::SetContainerSize(CDockablePane* targetPane, UINT cx, UINT cy)
 	}
 
 	pDefaultPaneDivider->Move(ptOffset);
+}
+
+
+// called when pane close
+BOOL CMainFrame::OnCloseMiniFrame(CPaneFrameWnd* pWnd)
+{
+	RETV(!pWnd, FALSE);
+
+	if (CDockablePaneBase *dockPane = dynamic_cast<CDockablePaneBase*>(pWnd->GetPane()))
+	{
+		if (CPlotView *plotView = dynamic_cast<CPlotView*>(dockPane->GetChildView()))
+		{
+			plotView->m_PlotCommandEditor.SetWindowTextW(L"");
+			plotView->m_PlotInputCommandEditor.SetWindowTextW(L"");
+		}
+	}
+
+	return __super::OnCloseMiniFrame(pWnd);
 }

@@ -29,8 +29,8 @@ public:
 	string m_plotCmd;
 
 	string m_mixingCmd;
-	string m_plotViewCmd;
-	string m_plotInputCmd;
+	vector<string> m_plotViewCmd;
+	vector<string> m_plotInputCmd;
 	string m_udpProtocolCmd;
 	int m_udpPort;
 	string m_udpPlayerIP;

@@ -158,9 +158,9 @@ void CUDPPlayerView::OnBnClickedButtonPlay()
 		m_UDPPort.GetWindowTextW(udpPortStr);
 		const int port = _wtoi((LPCTSTR)udpPortStr);
 
-		if (m_udpClient.Init(ip, port))
+		if (m_udpClient.Init(ip, port, 10))
 		{
-			m_udpClient.m_sleepMillis = 10;
+
 		}
 		else
 		{
@@ -268,7 +268,7 @@ void CUDPPlayerView::Update(const float deltaSeconds)
 			const int bufferLen = m_udpPlayer.Update(m_buffer, sizeof(m_buffer));
 			if (bufferLen > 0)
 			{
-				m_udpClient.SendData((BYTE*)m_buffer, 256);
+				m_udpClient.SendData((BYTE*)m_buffer, sizeof(m_buffer));
 				
 				const int curPos = m_udpPlayer.GetCurrentPlayElementIndex();
 				m_PlaySlider.SetPos(curPos);

@@ -15,7 +15,7 @@ CPlotView::CPlotView(CWnd* pParent /*=NULL*/)
 	, m_incTime(0)
 	, m_multiPlotWindows(NULL)
 	, m_isStart(false)
-	, m_addPlotView(false)
+	, m_plotId(0)
 {
 
 }
@@ -29,7 +29,6 @@ void CPlotView::DoDataExchange(CDataExchange* pDX)
 	CDockablePaneChildView::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_EDIT_PLOTINPUT, m_PlotInputCommandEditor);
 	DDX_Control(pDX, IDC_EDIT_COMMAND, m_PlotCommandEditor);
-	//DDX_Control(pDX, IDC_EDIT_PLOTINPUT_OUT, m_PlotInputOut);
 }
 
 
@@ -49,6 +48,7 @@ BEGIN_MESSAGE_MAP(CPlotView, CDockablePaneChildView)
 	ON_WM_SIZE()
 	ON_WM_DESTROY()
 	ON_BN_CLICKED(IDC_BUTTON_NEWPLOTWINDOW, &CPlotView::OnBnClickedButtonNewplotwindow)
+	ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 
@@ -97,7 +97,6 @@ void CPlotView::OnBnClickedButtonUpdate()
 
 	CString inputCmd;
 	m_PlotInputCommandEditor.GetWindowTextW(inputCmd);
-	//m_parser.ParseStr( wstr2str((LPCTSTR)inputCmd) );
 	ParsePlotInputStringFormat(wstr2str((LPCTSTR)inputCmd), m_plotInputParser);
 
 	m_isStart = true;
@@ -131,11 +130,6 @@ void CPlotView::Update(const float deltaSeconds)
 
 	if (m_incTime > elapseT)
 	{
-// 		const string plotInputOut = m_parser.Execute();
-// 		m_PlotInputOut.SetWindowTextW(str2wstr(plotInputOut).c_str());
-// 		m_multiPlotWindows->SetString(plotInputOut.c_str());
-// 		m_multiPlotWindows->DrawGraph(m_incTime);
-
 		for (u_int i = 0; i < m_plotInputParser.size(); ++i)
 		{
 			const string str = m_plotInputParser[i].Execute();
@@ -150,8 +144,7 @@ void CPlotView::Update(const float deltaSeconds)
 
 void CPlotView::OnDestroy()
 {
-	if (!m_addPlotView)
-		SaveConfig();
+	SaveConfig();
 
 	CDockablePaneChildView::OnDestroy();
 }
@@ -159,19 +152,22 @@ void CPlotView::OnDestroy()
 // UI에 설정된 값을 환경변수에 저장한다.
 void CPlotView::SaveConfig()
 {
+	if (m_plotId >= 10)
+		return;
+
 	UpdateData();
 
 	// 환경파일 저장
 	{
 		CString command;
 		m_PlotCommandEditor.GetWindowTextW(command);
-		g_option.m_plotViewCmd = wstr2str((LPCTSTR)command);
+		g_option.m_plotViewCmd[m_plotId] = wstr2str((LPCTSTR)command);
 	}
 
 	{
 		CString command;
 		m_PlotInputCommandEditor.GetWindowTextW(command);
-		g_option.m_plotInputCmd = wstr2str((LPCTSTR)command);
+		g_option.m_plotInputCmd[m_plotId] = wstr2str((LPCTSTR)command);
 	}
 }
 
@@ -195,9 +191,9 @@ void CPlotView::UpdateConfig()
 			L"name4 = Heave\r\n";
 
 		CString cmdStr;
-		if (!g_option.m_plotViewCmd.empty())
+		if ((m_plotId < 10) && !g_option.m_plotViewCmd.empty() && !g_option.m_plotViewCmd[m_plotId].empty())
 		{
-			cmdStr = str2wstr(g_option.m_plotViewCmd).c_str();
+			cmdStr = str2wstr(g_option.m_plotViewCmd[m_plotId]).c_str();
 		}
 		else
 		{
@@ -211,9 +207,9 @@ void CPlotView::UpdateConfig()
 	{
 		CString outCmd = L"$1;$2;$3;";
 		CString cmdStr;
-		if (!g_option.m_plotInputCmd.empty())
+		if ((m_plotId < 10) && !g_option.m_plotInputCmd.empty() && !g_option.m_plotInputCmd[m_plotId].empty())
 		{
-			cmdStr = str2wstr(g_option.m_plotInputCmd).c_str();
+			cmdStr = str2wstr(g_option.m_plotInputCmd[m_plotId]).c_str();
 		}
 		else
 		{
@@ -234,4 +230,12 @@ void CPlotView::OnBnClickedButtonNewplotwindow()
 	{
 		mainFrm->NewPlotWindow();
 	}
+}
+
+
+void CPlotView::OnClose()
+{
+	// TODO: Add your message handler code here and/or call default
+
+	CDockablePaneChildView::OnClose();
 }
