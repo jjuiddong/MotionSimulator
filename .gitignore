@@ -219,3 +219,5 @@ Source/media/udpstream_temp.udp
 *.opendb
 
 Source/MotionMonitor/.vs/config/applicationhost.config
+Source/MotionMonitor/errlog.txt
+Source/MotionMonitor/log.txt
