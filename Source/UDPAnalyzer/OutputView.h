@@ -27,14 +27,14 @@ protected:
 
 	cPlotInputParser m_sendFormatParser;
 
-	cMathParser m_rollParser;
-	cMathParser m_pitchParser;
-	cMathParser m_yawParser;
-	cMathParser m_heaveParser;
-	cMathParser m_roll2Parser;
-	cMathParser m_pitch2Parser;
-	cMathParser m_yaw2Parser;
-	cMathParser m_heave2Parser;
+	mathscript::cMathParser m_rollParser;
+	mathscript::cMathParser m_pitchParser;
+	mathscript::cMathParser m_yawParser;
+	mathscript::cMathParser m_heaveParser;
+	mathscript::cMathParser m_roll2Parser;
+	mathscript::cMathParser m_pitch2Parser;
+	mathscript::cMathParser m_yaw2Parser;
+	mathscript::cMathParser m_heave2Parser;
 
 	mathscript::cMathInterpreter m_interpreter;
 

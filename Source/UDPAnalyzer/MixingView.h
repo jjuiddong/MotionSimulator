@@ -20,7 +20,7 @@ public:
 
 
 protected:
-	cMathParser m_parser;
+	mathscript::cMathParser m_parser;
 	mathscript::cMathInterpreter m_interpreter;
 	float m_incTime;
 	float m_checkUpdateTime;
