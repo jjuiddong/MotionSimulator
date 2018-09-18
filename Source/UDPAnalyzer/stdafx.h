@@ -61,7 +61,7 @@
 
 //--------------------------------------------------------------------------------------------------------------------------------
 #include "../../../Common/Common/common.h"
-#include "../../../Common/Graphic/graphic.h"
+#include "../../../Common/Graphic11/graphic11.h"
 #include "../../../Common/Network/network.h"
 #include "../../../Common/Motion/motion.h"
 #include "../../../Common/UIComponent/uicomponent.h"
@@ -94,6 +94,6 @@ const static COLORREF g_blueColor = RGB(51, 153, 255);
 const static COLORREF g_grayColor = RGB(240, 240, 240);
 const static COLORREF g_redColor = RGB(255, 127, 80);
 
-extern C3DView *g_3dView;
-extern C3DView *g_3dView2;
+extern C3DView11 *g_3dView;
+extern C3DView11 *g_3dView2;
 

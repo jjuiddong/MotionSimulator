@@ -28,8 +28,8 @@ public:
 	CPlotView *m_plotView;
 	CMixingView *m_mixingView;
 	COutputView *m_outputView;
-	C3DView *m_dxView;
-	C3DView *m_dxView2;
+	C3DView11 *m_dxView;
+	C3DView11 *m_dxView2;
 	CUDPPlayerView *m_udpPlayerView;
 	CUDPSendView *m_udpSendView;
 	CShmView *m_shmView;
